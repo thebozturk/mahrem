@@ -1,0 +1,18 @@
+[package]
+name = "mahrem-dataset"
+description = "Altın set ve tahmin dosyalarının kayıt tipleri ve doğrulayıcısı"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+publish = false
+
+[dependencies]
+mahrem-core.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+unicode-normalization.workspace = true
+
+[lints]
+workspace = true

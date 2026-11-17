@@ -16,6 +16,7 @@ Her bilgi tek bir dosyada durur. Aynı şeyi ikinci bir dosyaya yazma, bağlant�
 | Şu an neredeyiz, sırada ne var? | [STATUS.md](STATUS.md) |
 | Büyük plan ve kapılar | [ROADMAP.md](ROADMAP.md) |
 | Crate sınırları ve bağımlılık yönü | [docs/architecture.md](docs/architecture.md) |
+| Altın set ve tahmin dosyasının formatı, etiket listesi | [docs/gold-set/](docs/gold-set/README.md) |
 | Neden böyle yaptık? | [docs/decisions/](docs/decisions/README.md) |
 | Katkı kuralları | [CONTRIBUTING.md](CONTRIBUTING.md) |
 
@@ -25,6 +26,7 @@ Her bilgi tek bir dosyada durur. Aynı şeyi ikinci bir dosyaya yazma, bağlant�
 | --- | --- |
 | `crates/mahrem-core` | Çekirdek: tespit, maskeleme, geri yerleştirme |
 | `crates/mahrem-py` | Python bağlaması (PyO3); Python API'si `python/mahrem/` altında |
+| `crates/mahrem-dataset` | Altın set ve tahmin dosyalarının kayıt tipleri ve doğrulayıcısı; format: [docs/gold-set/](docs/gold-set/README.md) |
 | `crates/mahrem-ner` | Türkçe NER (ONNX Runtime, CPU) |
 | `crates/mahrem-vault` | Etiket ile gerçek değer eşlemesinin şifreli saklanması |
 | `crates/mahrem-llm` | OpenAI uyumlu istemci; gateway ve harness ortak kullanır |

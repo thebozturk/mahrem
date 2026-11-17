@@ -6,14 +6,16 @@ Bu belge crate sınırlarını ve bağımlılık yönünü anlatır. Ürünün n
 
 ```mermaid
 flowchart TD
-    Py["mahrem-py<br/>PyO3 bağlaması"] --> Core["mahrem-core<br/>doğrulayıcılar, harf dönüşümü"]
+    Py["mahrem-py<br/>PyO3 bağlaması"] --> Core["mahrem-core<br/>doğrulayıcılar, harf dönüşümü,<br/>etiketler, konum dönüşümü"]
+    Dataset["mahrem-dataset<br/>altın set kayıtları, doğrulayıcı"] --> Core
     Conf[("conformance/<br/>ortak vakalar")] -. "okur" .- CoreTest["mahrem-core testleri"]
     Conf -. "okur" .- PyTest["mahrem-py testleri"]
 ```
 
-- Kod yalnızca `mahrem-core` ve `mahrem-py` içindedir. Diğer crate'ler yer tutucudur ve hiçbir bağımlılıkları yoktur.
-- `mahrem-core`'un çalışma zamanı bağımlılığı yoktur.
+- Kod `mahrem-core`, `mahrem-py` ve `mahrem-dataset` içindedir. Diğer crate'ler yer tutucudur ve hiçbir bağımlılıkları yoktur.
+- `mahrem-core`'un çalışma zamanı bağımlılığı yoktur. Etiket listesi (`Label`) burada durur, çünkü motorun çıktısı bu türlerle ifade edilir.
 - `mahrem-py` yalnızca çekirdeği dışarı açar; kendi mantığı yoktur.
+- `mahrem-dataset` motor değil, veri aracıdır: altın set ve tahmin dosyalarının kayıt tipleri ve doğrulayıcısı ([format](gold-set/README.md)). Bench, harness ve veri üretimi bunu kullanacak. Gerekçe: [0004](decisions/0004-veri-seti-crate.md).
 
 ## Değişmeyecek sınırlar
 
