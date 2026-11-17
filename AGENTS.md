@@ -17,6 +17,7 @@ Her bilgi tek bir dosyada durur. Aynı şeyi ikinci bir dosyaya yazma, bağlant�
 | Büyük plan ve kapılar | [ROADMAP.md](ROADMAP.md) |
 | Crate sınırları ve bağımlılık yönü | [docs/architecture.md](docs/architecture.md) |
 | Altın set ve tahmin dosyasının formatı, etiket listesi | [docs/gold-set/](docs/gold-set/README.md) |
+| Neyi, hangi sınırlarla etiketliyoruz? | [docs/gold-set/labeling-guideline.md](docs/gold-set/labeling-guideline.md) |
 | Neden böyle yaptık? | [docs/decisions/](docs/decisions/README.md) |
 | Katkı kuralları | [CONTRIBUTING.md](CONTRIBUTING.md) |
 

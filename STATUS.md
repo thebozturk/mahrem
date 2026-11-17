@@ -10,18 +10,13 @@ Son güncelleme: 2026-11-18
 
 ## Son biten
 
-- Altın set şeması (schema_version 1): [docs/gold-set/](docs/gold-set/README.md)
-  - 31 etiket (`Label`, `mahrem-core`), KVKK m.6/1 on etikette; çocuk verisi `child` işareti
-  - Konumlar code point, bitiş hariç, NFC; Rust dönüşümü `CodePointIndex`
-  - Kayıt tipleri, tahmin formatı ve doğrulayıcı: yeni `mahrem-dataset` crate'i
-  - Kararlar: [0002](docs/decisions/0002-konum-birimi.md), [0003](docs/decisions/0003-etiket-kimlikleri.md), [0004](docs/decisions/0004-veri-seti-crate.md)
-- CI düzeltmesi: ruff 0.17 Markdown içindeki Python bloklarını da biçimliyor; README örneği biçimlendi
+- Etiketleme yönergesi 0.1.0, taslak: [docs/gold-set/labeling-guideline.md](docs/gold-set/labeling-guideline.md). PRD'deki kurallar, etiket bazında kapsam, KVKK m.6 span kuralı, çocuk işareti, belirsizlik ve sürümleme
+- Doğrulayıcı yönergeyle hizalandı: yakınlık sözcükleri (Teyze, Hoca…) hitap listesinde, değeri çevreleyen noktalama için uyarı
+- Altın set şeması (schema_version 1): [docs/gold-set/](docs/gold-set/README.md), `mahrem-dataset`, kararlar 0002–0004
 
 ## Sıradaki
 
-Altın set v0'ın içeriği ve etiketleme yönergesi şemaya bağlı olarak başlayabilir. ROADMAP'teki "Altın set v0" kutusu içerik gelince işaretlenir.
-
-1. Etiketleme yönergesi ve zor örnekler seti (Türkçe; şemadaki `guideline_version` buna bağlanır)
+1. Zor örnekler seti: yönergedeki her kuralın en az bir doğrulanmış örneği ve PRD'deki zor durumlar. Bitince ROADMAP'teki "Etiketleme yönergesi ve zor örnekler seti" kutusu işaretlenir
 2. Altın set v0: açık ve kapalı bölüm
 3. Rust harness ve LLM istemcisi (`mahrem-harness`, `mahrem-llm`)
 
@@ -31,5 +26,5 @@ Yok.
 
 ## Açık sorular
 
-- Etiketleme yönergesi şunları netleştirmeli: yaş span'i ("[7 yaş]ında" mı, "[7]" mi), tek başına il adı etiketlenir mi, `ORGANIZATION` her kurum mu yoksa yalnızca kişiyle ilişkili olanlar mı.
+- Müşteri, abone, poliçe ve hasta numarası gibi kuruma özgü kimlikler için etiket yok; yönerge 0.1.0'da etiketlenmiyorlar. Yeni etiket gerekirse şema kararı (0003) güncellenir.
 - Doğrulayıcının komut satırı arayüzü yok; `mahrem-bench` gelince eklenir.
