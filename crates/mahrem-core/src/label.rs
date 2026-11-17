@@ -59,6 +59,7 @@ labels! {
     DriverLicense => "DRIVER_LICENSE", "EHLİYET", "Sürücü belgesi numarası.";
     SgkNumber => "SGK_NUMBER", "SGK_NO", "SGK sicil numarası.";
     Mersis => "MERSIS", "MERSİS", "MERSİS numarası.";
+    AccountId => "ACCOUNT_ID", "KAYIT_NO", "Kuruma özgü kişi numarası: müşteri, abone, poliçe, hasta.";
     LicensePlate => "LICENSE_PLATE", "PLAKA", "Araç plakası.";
     SerialNumber => "SERIAL_NUMBER", "SERİ_NO", "Cihaz seri numarası.";
     IpAddress => "IP_ADDRESS", "IP", "IP adresi.";

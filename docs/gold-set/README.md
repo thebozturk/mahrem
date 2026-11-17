@@ -113,6 +113,7 @@ Each label has a permanent ASCII **ID**, used in data files and APIs, and a defa
 | `DRIVER_LICENSE` | `EHLİYET` | Driver's license number | |
 | `SGK_NUMBER` | `SGK_NO` | Social security (SGK) registration number | |
 | `MERSIS` | `MERSİS` | Central business registry (MERSİS) number | |
+| `ACCOUNT_ID` | `KAYIT_NO` | A number an organization uses to identify a person: customer, subscriber, policy, patient, student, employee or bank account number | |
 | `LICENSE_PLATE` | `PLAKA` | Vehicle license plate | |
 | `SERIAL_NUMBER` | `SERİ_NO` | Device serial number | |
 | `IP_ADDRESS` | `IP` | IP address | |

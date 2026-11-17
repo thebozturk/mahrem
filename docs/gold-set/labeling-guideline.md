@@ -1,6 +1,6 @@
 # Etiketleme yönergesi
 
-Sürüm: **0.1.0** (taslak)
+Sürüm: **0.1.0**
 
 > *English:* This is the labeling guideline for the Mahrem gold set, written in Turkish for the annotators. Every gold record states the guideline version it follows in `meta.guideline_version`. The file format is described in [README.md](README.md).
 
@@ -47,6 +47,7 @@ Bu numaralar sahibine bakılmaksızın etiketlenir: bir şirketin VKN'si de, ör
 | `IBAN` | Türkiye ve diğer ülke IBAN'ları | Yalnızca banka adı ya da şube kodu |
 | `CARD_NUMBER` | Tam kart numarası | Maskeli ya da kısmi numara ("son dört hanesi 1111"); son kullanma tarihi |
 | `PASSPORT`, `DRIVER_LICENSE`, `SGK_NUMBER`, `MERSIS` | Belge ya da sicil numarasının kendisi | "Pasaport no:" gibi alan adları |
+| `ACCOUNT_ID` | Bir kurumun kişiyi tanımak için verdiği numara: müşteri, abone, poliçe, hasta (protokol), öğrenci, personel sicil, üyelik ve IBAN olmayan banka hesap numarası | Sipariş, kargo takip, fatura, şikâyet ve talep numaraları; bunlar bir işlemi tanımlar, kişiyi değil |
 
 Kartın güvenlik kodu (CVV) ve tek kullanımlık doğrulama kodları `SECRET`'tir.
 
@@ -147,4 +148,4 @@ Bir `PERSON` ya da `AGE` değeri 18 yaşından küçük birine aitse `child: tru
 
 | Sürüm | Değişiklik |
 | --- | --- |
-| 0.1.0 | İlk sürüm. PRD'deki yönerge tablosunun kuralları ve şema 1'in etiketleri |
+| 0.1.0 | İlk sürüm. PRD'deki yönerge tablosunun kuralları ve şema 1'in etiketleri, `ACCOUNT_ID` dahil |

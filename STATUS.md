@@ -10,7 +10,8 @@ Son güncelleme: 2026-11-18
 
 ## Son biten
 
-- Etiketleme yönergesi 0.1.0, taslak: [docs/gold-set/labeling-guideline.md](docs/gold-set/labeling-guideline.md). PRD'deki kurallar, etiket bazında kapsam, KVKK m.6 span kuralı, çocuk işareti, belirsizlik ve sürümleme
+- Etiketleme yönergesi 0.1.0: [docs/gold-set/labeling-guideline.md](docs/gold-set/labeling-guideline.md). PRD'deki kurallar, etiket bazında kapsam, KVKK m.6 span kuralı, çocuk işareti, belirsizlik ve sürümleme
+- Yeni etiket `ACCOUNT_ID` (müşteri, abone, poliçe, hasta numarası); etiket sayısı 32. Karar: [0005](docs/decisions/0005-account-id-etiketi.md)
 - Doğrulayıcı yönergeyle hizalandı: yakınlık sözcükleri (Teyze, Hoca…) hitap listesinde, değeri çevreleyen noktalama için uyarı
 - Altın set şeması (schema_version 1): [docs/gold-set/](docs/gold-set/README.md), `mahrem-dataset`, kararlar 0002–0004
 
@@ -26,5 +27,4 @@ Yok.
 
 ## Açık sorular
 
-- Müşteri, abone, poliçe ve hasta numarası gibi kuruma özgü kimlikler için etiket yok; yönerge 0.1.0'da etiketlenmiyorlar. Yeni etiket gerekirse şema kararı (0003) güncellenir.
 - Doğrulayıcının komut satırı arayüzü yok; `mahrem-bench` gelince eklenir.

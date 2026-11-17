@@ -169,7 +169,7 @@ Every release report shows results on both the open and the closed part.
 | Identity and tax | TCKN, YKN, VKN | Pattern + checksum + context | v0.1 |
 | Financial | IBAN (`TR`, 26 characters), card numbers | IBAN mod-97, Luhn | v0.1 |
 | Contact | Mobile and landline numbers, e-mail | Pattern + normalization | v0.1 |
-| Other IDs | Passport, driver's license, SGK, MERSİS | Pattern + checksum + context | v0.5 |
+| Other IDs | Passport, driver's license, SGK, MERSİS, customer and account numbers | Pattern + checksum + context | v0.5 |
 | Vehicles, devices, dates | License plate, serial number, IP, MAC, date of birth | Pattern + validation + context | v0.5 |
 | Secrets | API keys, JWTs, private keys, passwords | Pattern + entropy | v0.5 |
 | People | Names, honorifics (*Ayşe Hanım*) | NER + name dictionary | v0.5 |
