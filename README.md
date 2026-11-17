@@ -98,10 +98,10 @@ Placeholders that the LLM translates (`<PERSON_1>`), reformats (`[KİŞİ 1]`) o
 ```python
 import mahrem
 
-s = mahrem.session()                         # default KVKK policy, no config needed
+s = mahrem.session()  # default KVKK policy, no config needed
 masked = s.mask("Ben Ayşe Demir, TCKN 10000000146")
-reply = llm(masked.text)                     # the LLM only sees placeholders
-print(s.unmask(reply))                       # real values, correct suffixes
+reply = llm(masked.text)  # the LLM only sees placeholders
+print(s.unmask(reply))  # real values, correct suffixes
 ```
 
 **LLM gateway:** protect every outgoing LLM call from one place, in any language. The only change in your application is the base URL.
