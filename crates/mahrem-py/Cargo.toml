@@ -1,0 +1,27 @@
+[package]
+name = "mahrem-py"
+description = "Mahrem'in Python bağlaması (PyO3)"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+publish = false
+
+[lib]
+name = "_mahrem"
+crate-type = ["cdylib"]
+
+[dependencies]
+mahrem-core.workspace = true
+pyo3.workspace = true
+
+# PyO3 makroları unsafe kod üretir; bu yüzden workspace'teki `unsafe_code = "forbid"`
+# bu crate'te uygulanmaz. Belgelenmiş tek istisna budur.
+[lints.rust]
+missing_docs = "warn"
+unreachable_pub = "warn"
+
+[lints.clippy]
+all = { level = "deny", priority = -1 }
+pedantic = { level = "warn", priority = -1 }

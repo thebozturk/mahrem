@@ -1,0 +1,32 @@
+[project]
+name = "mahrem-workspace"
+version = "0.0.0"
+requires-python = ">=3.10"
+dependencies = ["mahrem"]
+
+[dependency-groups]
+dev = ["maturin>=1.9,<2", "pytest>=8", "ruff>=0.14"]
+
+[tool.uv]
+package = false
+
+[tool.uv.workspace]
+members = ["crates/mahrem-py"]
+
+[tool.uv.sources]
+mahrem = { workspace = true }
+
+[tool.pytest.ini_options]
+testpaths = ["crates/mahrem-py/tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+# Türkçe metinlerde ı ve İ karışıklık değil, doğru harftir.
+allowed-confusables = ["ı", "İ"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["mahrem"]

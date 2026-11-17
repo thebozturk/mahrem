@@ -1,0 +1,34 @@
+[workspace]
+resolver = "3"
+members = ["crates/*"]
+
+[workspace.package]
+version = "0.0.1"
+edition = "2024"
+rust-version = "1.88"
+license = "Apache-2.0"
+repository = "https://github.com/thebozturk/mahrem"
+homepage = "https://github.com/thebozturk/mahrem"
+authors = ["Buğrahan Öztürk"]
+keywords = ["pii", "turkish", "kvkk", "pseudonymization", "llm"]
+categories = ["text-processing"]
+
+[workspace.dependencies]
+mahrem-core = { path = "crates/mahrem-core", version = "0.0.1" }
+pyo3 = { version = "0.30", features = ["abi3-py310"] }
+proptest = "1.12"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+missing_docs = "warn"
+unreachable_pub = "warn"
+
+[workspace.lints.clippy]
+all = { level = "deny", priority = -1 }
+pedantic = { level = "warn", priority = -1 }
+
+[profile.release]
+lto = "fat"
+codegen-units = 1

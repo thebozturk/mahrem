@@ -1,0 +1,23 @@
+{"func": "is_valid_tckn", "input": "10000000146", "expected": true}
+{"func": "is_valid_tckn", "input": "11111111110", "expected": true}
+{"func": "is_valid_tckn", "input": "10000000145", "expected": false}
+{"func": "is_valid_tckn", "input": "01111111110", "expected": false}
+{"func": "is_valid_tckn", "input": "1000000014", "expected": false}
+{"func": "is_valid_ykn", "input": "99000000042", "expected": true}
+{"func": "is_valid_ykn", "input": "99111111194", "expected": true}
+{"func": "is_valid_ykn", "input": "10000000146", "expected": false}
+{"func": "is_valid_vkn", "input": "1234567890", "expected": true}
+{"func": "is_valid_vkn", "input": "1111111114", "expected": true}
+{"func": "is_valid_vkn", "input": "1234567891", "expected": false}
+{"func": "is_valid_vkn", "input": "123456789", "expected": false}
+{"func": "is_valid_iban_tr", "input": "TR330006100519786457841326", "expected": true}
+{"func": "is_valid_iban_tr", "input": "TR610000100000000000000001", "expected": true}
+{"func": "is_valid_iban_tr", "input": "TR330006100519786457841327", "expected": false}
+{"func": "is_valid_iban_tr", "input": "TR33 0006 1005 1978 6457 8413 26", "expected": false}
+{"func": "is_valid_card_number", "input": "4111111111111111", "expected": true}
+{"func": "is_valid_card_number", "input": "5555555555554444", "expected": true}
+{"func": "is_valid_card_number", "input": "4111111111111112", "expected": false}
+{"func": "is_valid_card_number", "input": "4111 1111 1111 1111", "expected": false}
+{"func": "to_lowercase_tr", "input": "İSTANBUL IĞDIR", "expected": "istanbul ığdır"}
+{"func": "to_lowercase_tr", "input": "DİYARBAKIR", "expected": "diyarbakır"}
+{"func": "to_uppercase_tr", "input": "izmir ılgaz", "expected": "İZMİR ILGAZ"}
