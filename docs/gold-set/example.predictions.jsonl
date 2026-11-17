@@ -3,4 +3,5 @@
 {"id": "example-0003", "spans": []}
 {"id": "example-0004", "spans": []}
 {"id": "example-0005", "spans": [{"start": 0, "end": 4, "label": "PERSON", "score": 0.41}, {"start": 15, "end": 20, "label": "PERSON", "score": 0.38}]}
+{"id": "example-0007", "spans": [{"start": 16, "end": 24, "label": "ACCOUNT_ID", "text": "12345678"}]}
 {"id": "example-0006", "spans": [{"start": 0, "end": 12, "label": "PERSON", "score": 0.9}]}

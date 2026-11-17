@@ -82,6 +82,8 @@ pub enum IssueKind {
     SuffixInside,
     /// Span bir hitap içeriyor (`Ayşe Hanım`).
     HonorificInside(String),
+    /// Span değeri çevreleyen bir tırnak, parantez ya da noktalamayla başlıyor ya da bitiyor.
+    SurroundingPunctuation,
     /// Yapısal değer checksum doğrulamasından geçmiyor.
     ChecksumFailed,
     /// `TCKN` etiketli değer yabancı kimlik numarası gibi görünüyor.
@@ -108,6 +110,7 @@ impl IssueKind {
         match self {
             IssueKind::SuffixInside
             | IssueKind::HonorificInside(_)
+            | IssueKind::SurroundingPunctuation
             | IssueKind::ChecksumFailed
             | IssueKind::LooksLikeYkn
             | IssueKind::UnlabeledRepeat { .. }
@@ -151,6 +154,9 @@ impl fmt::Display for IssueKind {
             IssueKind::SuffixInside => f.write_str("ek span'in içinde; ek dışarıda kalmalı"),
             IssueKind::HonorificInside(h) => {
                 write!(f, "hitap span'in içinde ({h:?}); hitap dışarıda kalmalı")
+            }
+            IssueKind::SurroundingPunctuation => {
+                f.write_str("span tırnak, parantez ya da noktalamayla başlıyor veya bitiyor")
             }
             IssueKind::ChecksumFailed => f.write_str("değer checksum doğrulamasından geçmiyor"),
             IssueKind::LooksLikeYkn => f.write_str("değer 99 ile başlıyor; etiket YKN olmalı"),
@@ -290,9 +296,51 @@ fn is_valid_version(v: &str) -> bool {
             .all(|p| !p.is_empty() && p.bytes().all(|b| b.is_ascii_digit()))
 }
 
+/// Etiketleme yönergesinde span dışında kalan hitap, unvan ve yakınlık
+/// sözcükleri (`docs/gold-set/labeling-guideline.md`, bölüm 2).
 const HONORIFICS: &[&str] = &[
-    "bay", "bayan", "bey", "hanım", "hanim", "sayın", "sayin", "sn", "sn.", "dr", "dr.", "av",
-    "av.", "prof", "prof.", "doç", "doç.", "doc.", "uzm.", "op.",
+    "bay",
+    "bayan",
+    "bey",
+    "hanım",
+    "hanim",
+    "hanımefendi",
+    "hanimefendi",
+    "beyefendi",
+    "sayın",
+    "sayin",
+    "sn",
+    "sn.",
+    "dr",
+    "dr.",
+    "av",
+    "av.",
+    "prof",
+    "prof.",
+    "doç",
+    "doç.",
+    "doc.",
+    "uzm.",
+    "op.",
+    "abi",
+    "abla",
+    "teyze",
+    "amca",
+    "dayı",
+    "dayi",
+    "hala",
+    "yenge",
+    "hoca",
+    "hocam",
+    "öğretmen",
+    "ogretmen",
+];
+
+/// Değeri çevreleyen ve span dışında kalması gereken işaretler. Nokta yok:
+/// kısaltmalar ("Ltd. Şti.") değerin parçasıdır.
+const OPENING: &[char] = &['"', '\'', '(', '[', '{', '“', '‘', '«'];
+const CLOSING: &[char] = &[
+    '"', '\'', ')', ']', '}', '”', '’', '»', ',', ';', ':', '!', '?',
 ];
 
 /// Etiketleme yönergesine aykırı görünen durumlar.
@@ -311,6 +359,9 @@ fn guideline_warnings(label: Label, text: &str) -> Vec<IssueKind> {
         {
             out.push(IssueKind::HonorificInside((*h).to_owned()));
         }
+    }
+    if text.starts_with(OPENING) || text.ends_with(CLOSING) {
+        out.push(IssueKind::SurroundingPunctuation);
     }
     out.extend(checksum_warning(label, text));
     out
@@ -700,6 +751,25 @@ mod tests {
         );
         let line = record("Dr. Kaya", json!([span(0, 8, "PERSON", "Dr. Kaya")]));
         assert_eq!(kinds(&line), vec![IssueKind::HonorificInside("Dr.".into())]);
+        let line = record("Fatma Teyze", json!([span(0, 11, "PERSON", "Fatma Teyze")]));
+        assert_eq!(
+            kinds(&line),
+            vec![IssueKind::HonorificInside("Teyze".into())]
+        );
+    }
+
+    #[test]
+    fn punctuation_warning() {
+        let line = record("\"Ayşe\" dedi", json!([span(0, 6, "PERSON", "\"Ayşe\"")]));
+        assert_eq!(kinds(&line), vec![IssueKind::SurroundingPunctuation]);
+        let line = record("Ali, Veli", json!([span(0, 4, "PERSON", "Ali,")]));
+        assert_eq!(kinds(&line), vec![IssueKind::SurroundingPunctuation]);
+        // Kısaltma noktası değerin parçasıdır.
+        let line = record(
+            "Örnek Ltd. Şti.",
+            json!([span(0, 15, "ORGANIZATION", "Örnek Ltd. Şti.")]),
+        );
+        assert_eq!(kinds(&line), vec![]);
     }
 
     #[test]

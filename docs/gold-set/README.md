@@ -6,7 +6,7 @@ This document defines the file format of the Mahrem gold set: the human-verified
 - **Validator:** [`crates/mahrem-dataset`](../../crates/mahrem-dataset) (Rust). The examples in this folder are validated in CI.
 - **Examples:** [`example.jsonl`](example.jsonl) (gold), [`example.predictions.jsonl`](example.predictions.jsonl) (tool output). All values are synthetic.
 
-What to label, and where a span starts and ends, is decided by the labeling guideline, not by this document. The format only makes those decisions machine-checkable.
+What to label, and where a span starts and ends, is decided by the [labeling guideline](labeling-guideline.md) (in Turkish), not by this document. The format only makes those decisions machine-checkable.
 
 ## Files
 
@@ -24,7 +24,7 @@ Documents that contain no personal data are part of the set, with an empty `span
     {"start": 13, "end": 23, "label": "PERSON", "text": "Ayşe Demir", "uncertain": false, "child": false},
     {"start": 31, "end": 35, "label": "PERSON", "text": "Elif", "uncertain": false, "child": true},
     {"start": 39, "end": 44, "label": "HEALTH", "text": "astım", "uncertain": false, "child": false},
-    {"start": 51, "end": 56, "label": "AGE", "text": "7 yaş", "uncertain": false, "child": true},
+    {"start": 51, "end": 52, "label": "AGE", "text": "7", "uncertain": false, "child": true},
     {"start": 67, "end": 81, "label": "PHONE", "text": "0555 000 00 00", "uncertain": false, "child": false}
   ],
   "meta": {
@@ -113,6 +113,7 @@ Each label has a permanent ASCII **ID**, used in data files and APIs, and a defa
 | `DRIVER_LICENSE` | `EHLİYET` | Driver's license number | |
 | `SGK_NUMBER` | `SGK_NO` | Social security (SGK) registration number | |
 | `MERSIS` | `MERSİS` | Central business registry (MERSİS) number | |
+| `ACCOUNT_ID` | `KAYIT_NO` | A number an organization uses to identify a person: customer, subscriber, policy, patient, student, employee or bank account number | |
 | `LICENSE_PLATE` | `PLAKA` | Vehicle license plate | |
 | `SERIAL_NUMBER` | `SERİ_NO` | Device serial number | |
 | `IP_ADDRESS` | `IP` | IP address | |
@@ -187,7 +188,8 @@ Tools with their own label names must map them to the IDs above before scoring.
 **Warnings** point at likely guideline violations for a person to check:
 
 - A span ending in an apostrophe and suffix (`Ahmet'in`). Suffixes stay outside the span.
-- A `PERSON` span beginning or ending with an honorific or title (`Hanım`, `Bey`, `Sayın`, `Dr.`, `Av.` and similar). These stay outside the span.
+- A `PERSON` span beginning or ending with an honorific, title or kinship term (`Hanım`, `Bey`, `Sayın`, `Dr.`, `Av.`, `Teyze`, `Hoca` and similar). These stay outside the span.
+- A span beginning with an opening quote or bracket, or ending with a closing quote, bracket, comma, semicolon, colon, `!` or `?`. Punctuation around a value stays outside; periods are allowed because abbreviations (`Ltd. Şti.`) belong to the value.
 - A `TCKN`, `YKN`, `VKN`, `IBAN` (Turkish) or `CARD_NUMBER` value that fails its checksum once spaces and `-./` are removed. Values that are not digits, such as spelled-out numbers, are skipped.
 - A `TCKN` value that starts with 99, which makes it a `YKN`.
 - A labeled value that appears again in the same document, at word boundaries, without a label.
