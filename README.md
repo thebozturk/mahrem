@@ -198,8 +198,9 @@ Each category's placeholder name, threshold and operator (placeholder, partial m
 
 | Path | Purpose | State |
 | --- | --- | --- |
-| `crates/mahrem-core` | Detection, masking and restoration engine | Validators, Turkish case mapping |
+| `crates/mahrem-core` | Detection, masking and restoration engine | Validators, Turkish case mapping, labels |
 | `crates/mahrem-py` | Python bindings (PyO3, abi3 wheels) | Working |
+| `crates/mahrem-dataset` | Gold set and prediction file format, validator ([format](docs/gold-set/README.md)) | Working |
 | `crates/mahrem-ner` | Turkish NER on ONNX Runtime | Placeholder |
 | `crates/mahrem-vault` | Encrypted placeholder ↔ value mapping | Placeholder |
 | `crates/mahrem-llm` | OpenAI-compatible client shared by the gateway and the harness | Placeholder |

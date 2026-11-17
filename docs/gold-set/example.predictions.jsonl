@@ -1,0 +1,6 @@
+{"id": "example-0001", "spans": [{"start": 13, "end": 23, "label": "PERSON", "score": 0.98}, {"start": 67, "end": 81, "label": "PHONE", "text": "0555 000 00 00"}]}
+{"id": "example-0002", "spans": [{"start": 6, "end": 17, "label": "PERSON"}, {"start": 28, "end": 47, "label": "CARD_NUMBER"}, {"start": 74, "end": 106, "label": "IBAN"}, {"start": 133, "end": 144, "label": "TCKN"}]}
+{"id": "example-0003", "spans": []}
+{"id": "example-0004", "spans": []}
+{"id": "example-0005", "spans": [{"start": 0, "end": 4, "label": "PERSON", "score": 0.41}, {"start": 15, "end": 20, "label": "PERSON", "score": 0.38}]}
+{"id": "example-0006", "spans": [{"start": 0, "end": 12, "label": "PERSON", "score": 0.9}]}

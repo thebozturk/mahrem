@@ -46,3 +46,6 @@ Bu karar neyi kolaylaştırır, neyi zorlaştırır?
 | No | Karar |
 | --- | --- |
 | [0001](0001-ajan-baglam-dosyalari.md) | Ajan bağlamı repodaki dosyalarda tutulur |
+| [0002](0002-konum-birimi.md) | Span konumları code point cinsinden, bitiş hariç |
+| [0003](0003-etiket-kimlikleri.md) | Etiket kimlikleri, KVKK m.6 gruplaması ve çocuk verisi |
+| [0004](0004-veri-seti-crate.md) | Etiketler çekirdekte, kayıt tipleri `mahrem-dataset`'te |
