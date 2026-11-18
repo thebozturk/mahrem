@@ -1,6 +1,6 @@
 # Etiketleme yönergesi
 
-Sürüm: **0.1.0**
+Sürüm: **0.2.0**
 
 > *English:* This is the labeling guideline for the Mahrem gold set, written in Turkish for the annotators. Every gold record states the guideline version it follows in `meta.guideline_version`. The file format is described in [README.md](README.md).
 
@@ -90,6 +90,7 @@ Kartın güvenlik kodu (CVV) ve tek kullanımlık doğrulama kodları `SECRET`'t
 `ORGANIZATION`: metinde bir kişiyle ilişkilendirilen kurum: çalıştığı işyeri, okuduğu okul, tedavi gördüğü hastane, müşterisi olduğu banka. Kurumun yasal eki içeride: `[Örnek Gıda A.Ş.]`.
 
 - Bir kişiyle ilişkilendirilmeyen kurumlar etiketlenmez: haber konusu şirket, mesajın yazıldığı şirketin kendisi.
+- Mesajın alıcısı olan kurum, kişi onun müşterisi olsa bile etiketlenmez: `Deneme Bankası'na yazıyorum, kartım bloke oldu` → etiket yok. Kurum bağlamdan zaten bellidir; maskelemek kişi hakkında bir şey gizlemez, yalnızca yanıtı bozar. Aynı kurum başka bir belgede, alıcı değilken geçiyorsa kişiyle ilişkisine göre etiketlenir.
 - Dernek, vakıf ve sendika üyeliği `MEMBERSHIP`'tir (aşağıda).
 
 ### Yaş
@@ -148,4 +149,5 @@ Bir `PERSON` ya da `AGE` değeri 18 yaşından küçük birine aitse `child: tru
 
 | Sürüm | Değişiklik |
 | --- | --- |
+| 0.2.0 | Mesajın alıcısı olan kurum etiketlenmez. 0.1.0'daki "kişinin bankası" ve "mesajın yazıldığı şirket" kuralları bu durumda çelişiyordu |
 | 0.1.0 | İlk sürüm. PRD'deki yönerge tablosunun kuralları ve şema 1'in etiketleri, `ACCOUNT_ID` dahil |

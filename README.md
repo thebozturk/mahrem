@@ -157,7 +157,7 @@ The main metric is the **leak-free document rate**: the share of documents in wh
 
 - **Gold set:** hand-written and synthetic Turkish texts with human-verified labels, including documents with no personal data so that false alarms are measured too. The open part is published under CC BY 4.0.
 - **Closed part:** a held-out split with the same distribution, never published so it cannot leak into training data. Its SHA-256 digest is published with every release, and it is rotated into the open set at each major version.
-- **Hard cases:** text without Turkish characters, names that are words, spaced and split numbers, numbers written out in words.
+- **Hard cases:** text without Turkish characters, names that are words, spaced and split numbers, numbers written out in words. Open: [`datasets/hard-cases`](datasets/README.md).
 - **Synthetic only:** the project never collects real personal data.
 
 Every release report shows results on both the open and the closed part.
@@ -209,6 +209,7 @@ Each category's placeholder name, threshold and operator (placeholder, partial m
 | `crates/mahrem-gateway` | LLM gateway | Placeholder |
 | `crates/mahrem-bench` | Benchmark CLI | Placeholder |
 | `conformance/` | Test cases shared by Rust and Python | 23 cases |
+| `datasets/` | Open datasets (CC BY 4.0) | Hard cases: 82 documents |
 
 ## Development
 
@@ -233,7 +234,7 @@ To report a vulnerability, use [private vulnerability reporting](SECURITY.md) in
 
 ## License
 
-Code is licensed under [Apache-2.0](LICENSE). Datasets are published under CC BY 4.0.
+Code is licensed under [Apache-2.0](LICENSE). Datasets are published under [CC BY 4.0](datasets/LICENSE).
 
 ---
 

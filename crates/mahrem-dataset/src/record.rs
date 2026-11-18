@@ -118,6 +118,22 @@ pub enum HardCase {
     ObfuscatedEmail,
 }
 
+impl HardCase {
+    /// Tüm zor durum türleri, tanım sırasıyla.
+    pub const ALL: &'static [HardCase] = &[
+        HardCase::NoDiacritics,
+        HardCase::AllCaps,
+        HardCase::AllLowercase,
+        HardCase::Typo,
+        HardCase::AmbiguousName,
+        HardCase::NameInPlace,
+        HardCase::SpelledNumbers,
+        HardCase::SpacedNumbers,
+        HardCase::SplitLines,
+        HardCase::ObfuscatedEmail,
+    ];
+}
+
 /// Köken kaydı.
 #[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
