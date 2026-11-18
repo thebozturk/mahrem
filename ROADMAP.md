@@ -30,7 +30,7 @@ Durum: **sürüyor**
 - [x] Doğrulayıcılar: TCKN/YKN, VKN, IBAN (mod 97), kart (Luhn); ortak test seti
 - [ ] Altın set v0: açık ve kapalı bölüm
 - [x] Etiketleme yönergesi ve zor örnekler seti
-- [ ] Rust harness ve LLM istemcisi (`mahrem-harness`, `mahrem-llm`)
+- [x] Rust harness ve LLM istemcisi (`mahrem-harness`, `mahrem-llm`)
 - [ ] Etiketleme iş akışı: tanıyıcılar, NER ve sözlükler her belgede çalışır; yerel LLM yalnızca uyuşmazlıkta karar verir; etiketi insan onaylar
 - [ ] Aday modellerin altın sette ölçülmesi
 

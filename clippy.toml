@@ -1,1 +1,1 @@
-doc-valid-idents = ["OpenAI", "LiteLLM", "PyO3", "ONNX", "..", "MLX"]
+doc-valid-idents = ["OpenAI", "LiteLLM", "PyO3", "ONNX", "..", "MLX", "SQLite"]

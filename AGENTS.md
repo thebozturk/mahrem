@@ -31,7 +31,7 @@ Her bilgi tek bir dosyada durur. Aynı şeyi ikinci bir dosyaya yazma, bağlant�
 | `crates/mahrem-dataset` | Altın set ve tahmin dosyalarının kayıt tipleri ve doğrulayıcısı; format: [docs/gold-set/](docs/gold-set/README.md) |
 | `crates/mahrem-ner` | Türkçe NER (ONNX Runtime, CPU) |
 | `crates/mahrem-vault` | Etiket ile gerçek değer eşlemesinin şifreli saklanması |
-| `crates/mahrem-llm` | OpenAI uyumlu istemci; gateway ve harness ortak kullanır |
+| `crates/mahrem-llm` | OpenAI uyumlu istemci; gateway ve veri üretimi ortak kullanır. Varsayılan olarak yalnızca yerel uç |
 | `crates/mahrem-harness` | Kaldığı yerden devam eden toplu iş çalıştırıcı |
 | `crates/mahrem-tools` | Ajanların ve MCP sunucusunun ortak araç tanımları |
 | `crates/mahrem-gateway` | LLM gateway (binary) |
