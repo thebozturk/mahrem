@@ -33,7 +33,7 @@ Documents that contain no personal data are part of the set, with an empty `span
     "source": "handwritten",
     "domain": "customer_support",
     "hard_cases": [],
-    "origin": {"generator": null, "run_id": null}
+    "origin": {"generator": null, "run_id": null, "group": null}
   }
 }
 ```
@@ -77,7 +77,7 @@ Offsets count **Unicode code points** in the NFC text, with an **exclusive end**
 | `source` | string | How the text was written: `handwritten`, `template` (templates filled by value generators) or `llm` (an LLM wrote the text with placeholders, value generators filled them). |
 | `domain` | string | `customer_support`, `email`, `chat`, `form`, `document`, `social_media`, `log` or `other`. |
 | `hard_cases` | array | Patterns in this document that are known to defeat rules or models (see below). Empty for ordinary documents. |
-| `origin` | object | Provenance: `generator` (model name or template ID, `null` for handwritten text) and `run_id` (the batch run that produced it, or `null`). |
+| `origin` | object | Provenance: `generator` (model name or template ID, `null` for handwritten text), `run_id` (the batch run that produced it, or `null`) and `group` (documents from the same template or prompt share a group and stay in the same part when the gold set is split; `null` means the document is its own group, see [composition.md](composition.md#split)). |
 
 Hard case values:
 

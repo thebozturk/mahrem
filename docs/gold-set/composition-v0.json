@@ -1,0 +1,26 @@
+{
+  "version": "v0",
+  "documents_per_part": 500,
+  "entities_per_document": [
+    {"min": 0, "max": 0, "share": [0.15, 0.25]},
+    {"min": 1, "max": 1, "share": [0.15, 0.25]},
+    {"min": 2, "max": 3, "share": [0.25, 0.35]},
+    {"min": 4, "max": 5, "share": [0.15, 0.25]},
+    {"min": 6, "max": null, "share": [0.05, 0.15]}
+  ],
+  "domains": {
+    "customer_support": [0.25, 0.35],
+    "chat": [0.15, 0.25],
+    "email": [0.10, 0.20],
+    "form": [0.05, 0.15],
+    "document": [0.05, 0.15],
+    "social_media": [0.05, 0.15],
+    "log": [0.03, 0.10],
+    "other": [0.00, 0.05]
+  },
+  "min_spans_per_label": 10,
+  "min_high_risk_documents": 150,
+  "min_child_spans": 20,
+  "min_hard_case_share": 0.15,
+  "min_handwritten_share": 0.10
+}

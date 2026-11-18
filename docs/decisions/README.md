@@ -51,3 +51,4 @@ Bu karar neyi kolaylaştırır, neyi zorlaştırır?
 | [0004](0004-veri-seti-crate.md) | Etiketler çekirdekte, kayıt tipleri `mahrem-dataset`'te |
 | [0005](0005-account-id-etiketi.md) | Kuruma özgü kişi numaraları için `ACCOUNT_ID` etiketi |
 | [0006](0006-acik-veri-setleri.md) | Açık veri setleri repoda `datasets/` altında; köken her kayıtta yazılı |
+| [0007](0007-altin-set-kompozisyonu.md) | Altın setin iki bölümü aynı üretimden çıkar ve grup düzeyinde bölünür |
