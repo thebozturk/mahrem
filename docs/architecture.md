@@ -8,19 +8,22 @@ Bu belge crate sınırlarını ve bağımlılık yönünü anlatır. Ürünün n
 flowchart TD
     Py["mahrem-py<br/>PyO3 bağlaması"] --> Core["mahrem-core<br/>doğrulayıcılar, harf dönüşümü,<br/>etiketler, konum dönüşümü,<br/>sahte değer üreticileri"]
     Dataset["mahrem-dataset<br/>altın set kayıtları, doğrulayıcı"] --> Core
-    Harness["mahrem-harness<br/>plan, aşama, shard, durum"]
-    Llm["mahrem-llm<br/>OpenAI uyumlu istemci"]
+    Datagen["mahrem-datagen<br/>sentetik veri (binary)"] --> Harness["mahrem-harness<br/>plan, aşama, shard, durum"]
+    Datagen --> Llm["mahrem-llm<br/>OpenAI uyumlu istemci"]
+    Datagen --> Dataset
+    Datagen --> Core
     Conf[("conformance/<br/>ortak vakalar")] -. "okur" .- CoreTest["mahrem-core testleri"]
     Conf -. "okur" .- PyTest["mahrem-py testleri"]
 ```
 
-- Kod `mahrem-core`, `mahrem-py`, `mahrem-dataset`, `mahrem-harness` ve `mahrem-llm` içindedir. Diğer crate'ler yer tutucudur ve hiçbir bağımlılıkları yoktur.
+- Kod `mahrem-core`, `mahrem-py`, `mahrem-dataset`, `mahrem-harness`, `mahrem-llm` ve `mahrem-datagen` içindedir. Diğer crate'ler yer tutucudur ve hiçbir bağımlılıkları yoktur.
 - `mahrem-core`'un çalışma zamanı bağımlılığı yoktur. Etiket listesi (`Label`) burada durur, çünkü motorun çıktısı bu türlerle ifade edilir.
 - Sahte değer üreticileri (`mahrem_core::fake`) de çekirdektedir: sentetik veri hattı ve ileride sahte veri operatörü aynı kodu kullanır. Gerekçe: [0010](decisions/0010-sahte-deger-ureticileri.md).
 - `mahrem-py` yalnızca çekirdeği dışarı açar; kendi mantığı yoktur.
 - `mahrem-dataset` motor değil, veri aracıdır: altın set ve tahmin dosyalarının kayıt tipleri, doğrulayıcısı, dağılım raporu, açık/kapalı bölmesi ve kapalı bölüm özeti ([format](gold-set/README.md), [kompozisyon](gold-set/composition.md)). Bench ve veri üretimi bunu kullanacak. Gerekçe: [0004](decisions/0004-veri-seti-crate.md).
 - `mahrem-harness` toplu iş çalıştırıcıdır: deterministik plan, kaldığı yerden devam, köken kaydı. Hiçbir Mahrem crate'ine bağımlı değildir; LLM'i bilmez. Aşamayı yazan üst binary LLM'i çağırır. Gerekçe: [0008](decisions/0008-harness.md).
 - `mahrem-llm` OpenAI uyumlu istemcidir: yeniden deneme, eşzamanlılık sınırı, token sayacı. Hiçbir Mahrem crate'ine bağımlı değildir. Varsayılan olarak yalnızca yerel uca bağlanır: [0009](decisions/0009-llm-yerel-uc.md).
+- `mahrem-datagen` ilk üst binary'dir: harness'ın aşamasını yazar, LLM'i çağırır, değerleri çekirdeğin üreticileriyle yerleştirir, kayıtları `mahrem-dataset`'le doğrular ve böler. Kılavuz: [datagen.md](datagen.md).
 
 ## Değişmeyecek sınırlar
 
@@ -32,7 +35,7 @@ flowchart TD
 
 Crate başlıklarında yazan niyetlerdir; kod gelince bu bölüm "Bugünkü durum"a taşınır.
 
-- `mahrem-datagen` (veri üretimi) `mahrem-harness`, `mahrem-llm` ve `mahrem-dataset`'i birleştirecek. `mahrem-llm`'i ayrıca `mahrem-gateway` kullanacak.
+- `mahrem-llm`'i ayrıca `mahrem-gateway` kullanacak.
 - `mahrem-tools`'u ajanlar ve MCP sunucusu kullanacak.
 - `mahrem-ner` modeli ONNX Runtime ile CPU'da çalıştıracak.
 - `mahrem-vault` etiket ile gerçek değer eşlemesini şifreli saklayacak.

@@ -1,0 +1,124 @@
+# Metin türüne göre senaryolar. Her senaryo bir bölme grubudur: aynı
+# senaryodan çıkan belgeler altın setin aynı bölümüne düşer.
+
+[domains.customer_support]
+description = "bir şirketin müşteri hizmetlerine yazılmış mesaj"
+scenarios = [
+  "kargosu gecikmiş bir müşteri durumu soruyor",
+  "yanlış ürün gelmiş, değişim istiyor",
+  "faturada fazla ücret çıkmış, itiraz ediyor",
+  "kredi kartı bloke olmuş, açılmasını istiyor",
+  "internet bağlantısı kopuyor, teknik destek istiyor",
+  "aboneliğini iptal etmek istiyor",
+  "sigorta poliçesindeki adresini güncellemek istiyor",
+  "hastane randevusunu değiştirmek istiyor",
+  "iade ettiği ürünün parasının yatmadığını söylüyor",
+  "çocuğu için okul servis kaydı yaptırmak istiyor",
+  "elektrik kesintisi için tazminat soruyor",
+  "telefon hattını başka bir kişiye devretmek istiyor",
+  "mobil uygulamaya giriş yapamıyor",
+  "kira ödemesi için yaptığı havalenin ulaşmadığını söylüyor",
+  "eczaneden aldığı ilacın raporla ilgili sorununu anlatıyor",
+  "araç servisinden aracını almak için randevu istiyor",
+]
+
+[domains.chat]
+description = "mesajlaşma uygulamasında arkadaşa, aileye ya da iş arkadaşına yazılmış mesaj"
+scenarios = [
+  "arkadaşına doğum günü hazırlığını anlatıyor",
+  "kardeşine annelerinin doktor randevusunu hatırlatıyor",
+  "iş arkadaşına toplantı notlarını gönderiyor",
+  "komşusuna kargosunu teslim aldığını söylüyor",
+  "arkadaşından borç verdiği parayı göndermesini istiyor",
+  "eşine çocuğun okul veli toplantısını hatırlatıyor",
+  "arkadaşına yeni taşındığı evin yerini tarif ediyor",
+  "ev arkadaşına fatura paylaşımını yazıyor",
+  "arkadaşıyla tatil planı yapıyor",
+  "aile grubuna dedelerinin hastaneye kaldırıldığını haber veriyor",
+  "spor salonundaki arkadaşına antrenman programını gönderiyor",
+  "bir arkadaşına iş başvurusunda referans olmasını rica ediyor",
+]
+
+[domains.email]
+description = "e-posta"
+scenarios = [
+  "insan kaynaklarına iş başvurusu",
+  "çalışanın izin talebi",
+  "okul müdürlüğüne veli yazısı",
+  "ev sahibine kira sözleşmesi hakkında yazı",
+  "muhasebeye masraf beyanı",
+  "bir avukata danışma talebi",
+  "doktora tahlil sonuçlarıyla ilgili soru",
+  "yeni çalışanın ilk gün bilgilendirmesi",
+  "bir müşteriye teklif ve ödeme bilgileri",
+  "üniversite öğrenci işlerine belge talebi",
+  "bankaya kredi başvurusu hakkında soru",
+  "bir derneğe üyelik başvurusu",
+]
+
+[domains.form]
+description = "bir başvuru, kayıt ya da şikâyet formuna girilmiş bilgiler ve açıklama; alan adı ve değer satırları"
+scenarios = [
+  "kurs kayıt formu",
+  "kargo hasar bildirim formu",
+  "kulüp üyelik formu",
+  "iş başvuru formu",
+  "hasta kayıt formu",
+  "kiralık araç teslim formu",
+  "burs başvuru formu",
+  "garanti başvuru formu",
+  "otel konaklama kayıt formu",
+  "okul kayıt formu",
+]
+
+[domains.document]
+description = "resmî ya da yarı resmî belge: dilekçe, rapor, tutanak, sözleşme maddesi"
+scenarios = [
+  "belediyeye dilekçe",
+  "trafik kazası tespit tutanağı",
+  "kira sözleşmesinin taraflar maddesi",
+  "işe giriş bildirgesi açıklaması",
+  "okul disiplin kurulu tutanağı",
+  "vekâletname metni",
+  "hasta epikriz raporu özeti",
+  "tüketici hakem heyetine başvuru dilekçesi",
+  "iş yeri kaza raporu",
+  "noter onaylı taahhütname",
+]
+
+[domains.social_media]
+description = "sosyal medya gönderisi ya da yorumu"
+scenarios = [
+  "bir markanın gönderisine şikâyet yorumu",
+  "kayıp evcil hayvan ilanı",
+  "satılık eşya ilanı",
+  "bir kafe hakkında değerlendirme",
+  "mezuniyet töreni paylaşımı",
+  "hastane deneyimini anlatan gönderi",
+  "kiralık ev ilanı",
+  "bir etkinliğe davet gönderisi",
+  "yardım kampanyası duyurusu",
+  "spor maçı sonrası yorum",
+]
+
+[domains.log]
+description = "uygulama ya da sunucu log satırları; zaman damgalı, makine çıktısı biçiminde"
+scenarios = [
+  "kullanıcı giriş denemeleri",
+  "ödeme servisi hata kayıtları",
+  "e-posta gönderim kuyruğu",
+  "API isteği ayrıntılı log",
+  "ağ cihazı bağlantı kayıtları",
+  "müşteri kaydı oluşturma işlemi",
+  "şifre sıfırlama akışı",
+  "veritabanı yedekleme ve kullanıcı işlemleri",
+]
+
+[domains.other]
+description = "kişisel not ya da serbest metin"
+scenarios = [
+  "kendine aldığı yapılacaklar notu",
+  "günlüğe yazılmış bir gün",
+  "bir toplantıdan alınmış el notları",
+  "telefon görüşmesinden alınmış not",
+]

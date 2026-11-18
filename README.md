@@ -205,6 +205,7 @@ Each category's placeholder name, threshold and operator (placeholder, partial m
 | `crates/mahrem-vault` | Encrypted placeholder ↔ value mapping | Placeholder |
 | `crates/mahrem-llm` | OpenAI-compatible client shared by the gateway and data generation; local endpoints only by default | Working |
 | `crates/mahrem-harness` | Resumable batch runner for data generation and evaluation | Working |
+| `crates/mahrem-datagen` | Synthetic data generation: a local LLM writes text with placeholders, generators fill in the values ([guide](docs/datagen.md)) | Working |
 | `crates/mahrem-tools` | Tool definitions shared by agents and the MCP server | Placeholder |
 | `crates/mahrem-gateway` | LLM gateway | Placeholder |
 | `crates/mahrem-bench` | Benchmark CLI | Placeholder |

@@ -48,6 +48,22 @@ pub fn full_name(rng: &mut Rng, gender: Option<Gender>) -> String {
     }
 }
 
+/// Aynı zamanda sıradan bir sözcük olan bir ad ("Umut", "Deniz"); zor durum
+/// örnekleri için.
+pub fn ambiguous_first_name(rng: &mut Rng) -> &'static str {
+    rng.pick(AMBIGUOUS)
+}
+
+/// Sözcük listelerdeki bir ad ya da soyad mı? Üretilen metinde yer tutucu
+/// dışında kalmış ad aramak için.
+#[must_use]
+pub fn is_listed_name(word: &str) -> bool {
+    FEMALE.contains(&word)
+        || MALE.contains(&word)
+        || UNISEX.contains(&word)
+        || SURNAMES.contains(&word)
+}
+
 /// Ad aynı zamanda sıradan bir sözcük mü? ("Umut", "Deniz")
 #[must_use]
 pub fn is_ambiguous_name(name: &str) -> bool {
@@ -135,6 +151,8 @@ mod tests {
             assert!(u.is_ascii() && !u.contains(' '), "{u}");
         }
         assert!(is_ambiguous_name("Umut"));
+        assert!(is_ambiguous_name(ambiguous_first_name(&mut Rng::new(1))));
+        assert!(is_listed_name("Ayşe") && is_listed_name("Yılmaz") && !is_listed_name("araba"));
         assert!(!is_ambiguous_name("Mehmet"));
     }
 }
