@@ -360,7 +360,9 @@ fn guideline_warnings(label: Label, text: &str) -> Vec<IssueKind> {
             out.push(IssueKind::HonorificInside((*h).to_owned()));
         }
     }
-    if text.starts_with(OPENING) || text.ends_with(CLOSING) {
+    // Alan koduyla başlayan telefon numarası parantezle başlar: "(0212) 000 00 00".
+    let phone_area_code = label == Label::Phone && text.starts_with('(');
+    if (text.starts_with(OPENING) && !phone_area_code) || text.ends_with(CLOSING) {
         out.push(IssueKind::SurroundingPunctuation);
     }
     out.extend(checksum_warning(label, text));
@@ -764,6 +766,11 @@ mod tests {
         assert_eq!(kinds(&line), vec![IssueKind::SurroundingPunctuation]);
         let line = record("Ali, Veli", json!([span(0, 4, "PERSON", "Ali,")]));
         assert_eq!(kinds(&line), vec![IssueKind::SurroundingPunctuation]);
+        let line = record(
+            "(0212) 000 00 00",
+            json!([span(0, 16, "PHONE", "(0212) 000 00 00")]),
+        );
+        assert_eq!(kinds(&line), vec![]);
         // Kısaltma noktası değerin parçasıdır.
         let line = record(
             "Örnek Ltd. Şti.",

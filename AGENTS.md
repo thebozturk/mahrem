@@ -36,6 +36,7 @@ Her bilgi tek bir dosyada durur. Aynı şeyi ikinci bir dosyaya yazma, bağlant�
 | `crates/mahrem-gateway` | LLM gateway (binary) |
 | `crates/mahrem-bench` | Benchmark CLI (binary) |
 | `conformance/` | Rust ve Python'un birlikte okuduğu ortak test vakaları |
+| `datasets/` | Açık veri setleri (CC BY 4.0); CI hepsini doğrular. Kapalı bölüm burada durmaz |
 
 Hangi crate'in dolu, hangisinin yer tutucu olduğu README'deki "Repository layout" tablosundadır.
 

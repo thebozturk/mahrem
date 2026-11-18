@@ -10,16 +10,16 @@ Son güncelleme: 2026-11-18
 
 ## Son biten
 
-- Etiketleme yönergesi 0.1.0: [docs/gold-set/labeling-guideline.md](docs/gold-set/labeling-guideline.md). PRD'deki kurallar, etiket bazında kapsam, KVKK m.6 span kuralı, çocuk işareti, belirsizlik ve sürümleme
-- Yeni etiket `ACCOUNT_ID` (müşteri, abone, poliçe, hasta numarası); etiket sayısı 32. Karar: [0005](docs/decisions/0005-account-id-etiketi.md)
-- Doğrulayıcı yönergeyle hizalandı: yakınlık sözcükleri (Teyze, Hoca…) hitap listesinde, değeri çevreleyen noktalama için uyarı
-- Altın set şeması (schema_version 1): [docs/gold-set/](docs/gold-set/README.md), `mahrem-dataset`, kararlar 0002–0004
+- Zor örnekler seti: [datasets/hard-cases/hard-cases.jsonl](datasets/hard-cases/hard-cases.jsonl). 81 belge, 132 span, 11 belgede kişisel veri yok; her etiket ve her zor durum türü en az bir kez geçiyor. CI'da hatasız ve uyarısız doğrulanıyor
+- Açık veri setleri `datasets/` altında, CC BY 4.0. Karar: [0006](docs/decisions/0006-acik-veri-setleri.md)
+- Doğrulayıcı: alan koduyla başlayan telefon numarası (`(0212) …`) artık uyarı vermiyor
+- Daha önce: etiketleme yönergesi 0.1.0, `ACCOUNT_ID`, altın set şeması
 
 ## Sıradaki
 
-1. Zor örnekler seti: yönergedeki her kuralın en az bir doğrulanmış örneği ve PRD'deki zor durumlar. Bitince ROADMAP'teki "Etiketleme yönergesi ve zor örnekler seti" kutusu işaretlenir
-2. Altın set v0: açık ve kapalı bölüm
-3. Rust harness ve LLM istemcisi (`mahrem-harness`, `mahrem-llm`)
+1. Altın set v0: açık ve kapalı bölüm. İçerik ve üretim yolu (elle, şablon, yerel LLM) kararlaştırılmalı
+2. Rust harness ve LLM istemcisi (`mahrem-harness`, `mahrem-llm`)
+3. Etiketleme iş akışı: tanıyıcılar, NER ve sözlükler; uyuşmazlıkta yerel LLM; Argilla
 
 ## Yarım kalan iş
 
@@ -27,4 +27,5 @@ Yok.
 
 ## Açık sorular
 
+- Yönergede boşluk: kişinin müşterisi olduğu kurum mesajın alıcısıysa (bankaya yazan banka müşterisi) `ORGANIZATION` etiketlenir mi? İki kural çelişiyor; zor örnekler setinde bu durumdan kaçınıldı.
 - Doğrulayıcının komut satırı arayüzü yok; `mahrem-bench` gelince eklenir.
