@@ -9,7 +9,7 @@ then puts the real values back into the response with correct Turkish grammar.
 
 [![CI](https://github.com/thebozturk/mahrem/actions/workflows/ci.yml/badge.svg)](https://github.com/thebozturk/mahrem/actions/workflows/ci.yml)
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
-![Rust 1.88+](https://img.shields.io/badge/rust-1.88%2B-orange.svg)
+![Rust 1.89+](https://img.shields.io/badge/rust-1.89%2B-orange.svg)
 ![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab.svg)
 ![Status: pre-alpha](https://img.shields.io/badge/status-pre--alpha-lightgrey.svg)
 
@@ -203,8 +203,8 @@ Each category's placeholder name, threshold and operator (placeholder, partial m
 | `crates/mahrem-dataset` | Gold set and prediction file format, validator ([format](docs/gold-set/README.md)) | Working |
 | `crates/mahrem-ner` | Turkish NER on ONNX Runtime | Placeholder |
 | `crates/mahrem-vault` | Encrypted placeholder ↔ value mapping | Placeholder |
-| `crates/mahrem-llm` | OpenAI-compatible client shared by the gateway and the harness | Placeholder |
-| `crates/mahrem-harness` | Resumable batch runner for data generation and evaluation | Placeholder |
+| `crates/mahrem-llm` | OpenAI-compatible client shared by the gateway and data generation; local endpoints only by default | Working |
+| `crates/mahrem-harness` | Resumable batch runner for data generation and evaluation | Working |
 | `crates/mahrem-tools` | Tool definitions shared by agents and the MCP server | Placeholder |
 | `crates/mahrem-gateway` | LLM gateway | Placeholder |
 | `crates/mahrem-bench` | Benchmark CLI | Placeholder |

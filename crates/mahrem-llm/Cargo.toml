@@ -1,6 +1,6 @@
 [package]
 name = "mahrem-llm"
-description = "OpenAI uyumlu LLM istemcisi; gateway ve harness ortak kullanır"
+description = "OpenAI uyumlu LLM istemcisi; gateway ve veri üretimi ortak kullanır"
 version.workspace = true
 edition.workspace = true
 rust-version.workspace = true
@@ -9,6 +9,16 @@ repository.workspace = true
 publish = false
 
 [dependencies]
+reqwest.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+tokio = { workspace = true, features = ["sync", "time"] }
+tracing.workspace = true
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["macros", "rt-multi-thread"] }
+wiremock.workspace = true
 
 [lints]
 workspace = true
