@@ -19,6 +19,7 @@ Her bilgi tek bir dosyada durur. Aynı şeyi ikinci bir dosyaya yazma, bağlant�
 | Altın set ve tahmin dosyasının formatı, etiket listesi | [docs/gold-set/](docs/gold-set/README.md) |
 | Altın set nasıl bir dağılımda, nasıl bölünür? | [docs/gold-set/composition.md](docs/gold-set/composition.md) |
 | Neyi, hangi sınırlarla etiketliyoruz? | [docs/gold-set/labeling-guideline.md](docs/gold-set/labeling-guideline.md) |
+| Sentetik veri nasıl üretilir? | [docs/datagen.md](docs/datagen.md) |
 | Neden böyle yaptık? | [docs/decisions/](docs/decisions/README.md) |
 | Katkı kuralları | [CONTRIBUTING.md](CONTRIBUTING.md) |
 
@@ -33,6 +34,7 @@ Her bilgi tek bir dosyada durur. Aynı şeyi ikinci bir dosyaya yazma, bağlant�
 | `crates/mahrem-vault` | Etiket ile gerçek değer eşlemesinin şifreli saklanması |
 | `crates/mahrem-llm` | OpenAI uyumlu istemci; gateway ve veri üretimi ortak kullanır. Varsayılan olarak yalnızca yerel uç |
 | `crates/mahrem-harness` | Kaldığı yerden devam eden toplu iş çalıştırıcı |
+| `crates/mahrem-datagen` | Sentetik veri üretimi (binary); kılavuz: [docs/datagen.md](docs/datagen.md) |
 | `crates/mahrem-tools` | Ajanların ve MCP sunucusunun ortak araç tanımları |
 | `crates/mahrem-gateway` | LLM gateway (binary) |
 | `crates/mahrem-bench` | Benchmark CLI (binary) |

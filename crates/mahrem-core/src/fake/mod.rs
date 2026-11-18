@@ -41,7 +41,7 @@ pub use rng::Rng;
 pub use special::special_category;
 pub use words::number_words;
 
-pub use names::{email, is_ambiguous_name};
+pub use names::{ambiguous_first_name, email, is_ambiguous_name, is_listed_name};
 
 use crate::Label;
 

@@ -729,6 +729,25 @@ dependencies = [
 ]
 
 [[package]]
+name = "mahrem-datagen"
+version = "0.0.1"
+dependencies = [
+ "mahrem-core",
+ "mahrem-dataset",
+ "mahrem-harness",
+ "mahrem-llm",
+ "serde",
+ "serde_json",
+ "sha2",
+ "thiserror",
+ "tokio",
+ "toml",
+ "tracing",
+ "unicode-normalization",
+ "wiremock",
+]
+
+[[package]]
 name = "mahrem-dataset"
 version = "0.0.1"
 dependencies = [

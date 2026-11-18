@@ -1,0 +1,29 @@
+[package]
+name = "mahrem-datagen"
+description = "Sentetik veri üretimi: yerel LLM yer tutuculu metin yazar, değerleri üreticiler yerleştirir"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+publish = false
+
+[dependencies]
+mahrem-core.workspace = true
+mahrem-dataset = { path = "../mahrem-dataset" }
+mahrem-harness = { path = "../mahrem-harness" }
+mahrem-llm = { path = "../mahrem-llm" }
+serde.workspace = true
+serde_json.workspace = true
+sha2.workspace = true
+thiserror.workspace = true
+tokio = { workspace = true, features = ["macros", "rt-multi-thread"] }
+toml.workspace = true
+tracing.workspace = true
+unicode-normalization.workspace = true
+
+[dev-dependencies]
+wiremock.workspace = true
+
+[lints]
+workspace = true
