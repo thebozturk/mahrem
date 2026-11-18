@@ -10,22 +10,25 @@ Son güncelleme: 2026-11-18
 
 ## Son biten
 
-- Zor örnekler seti: [datasets/hard-cases/hard-cases.jsonl](datasets/hard-cases/hard-cases.jsonl). 82 belge, 134 span, 11 belgede kişisel veri yok; her etiket ve her zor durum türü en az bir kez geçiyor. CI'da hatasız ve uyarısız doğrulanıyor
-- Açık veri setleri `datasets/` altında, CC BY 4.0. Karar: [0006](docs/decisions/0006-acik-veri-setleri.md)
-- Doğrulayıcı: alan koduyla başlayan telefon numarası (`(0212) …`) artık uyarı vermiyor
-- Etiketleme yönergesi 0.2.0: mesajın alıcısı olan kurum etiketlenmez
-- Daha önce: etiketleme yönergesi 0.1.0, `ACCOUNT_ID`, altın set şeması
+- Altın set v0, 1. kısım: kompozisyon ve araçlar. İçerik henüz yok
+  - [docs/gold-set/composition.md](docs/gold-set/composition.md) ve hedefler: [composition-v0.json](docs/gold-set/composition-v0.json) (bölüm başına en az 500 belge)
+  - `mahrem-dataset`: dağılım raporu (`Stats`, `Composition::check`), grup düzeyinde bölme (`part_of`), kapalı bölüm özeti (`digest`); Python ile aynı sonucu verdiği testte
+  - Kayıtlara `origin.group` alanı eklendi; karar [0007](docs/decisions/0007-altin-set-kompozisyonu.md)
+- Daha önce: zor örnekler seti (82 belge), etiketleme yönergesi 0.2.0, altın set şeması
 
 ## Sıradaki
 
-1. Altın set v0: açık ve kapalı bölüm. İçerik ve üretim yolu (elle, şablon, yerel LLM) kararlaştırılmalı
-2. Rust harness ve LLM istemcisi (`mahrem-harness`, `mahrem-llm`)
-3. Etiketleme iş akışı: tanıyıcılar, NER ve sözlükler; uyuşmazlıkta yerel LLM; Argilla
+Sıra karar 0007'ye göre: altın setin içeriği yerel üretime bağlı.
+
+1. Rust harness ve LLM istemcisi (`mahrem-harness`, `mahrem-llm`)
+2. Veri üretimi (`mahrem-datagen`, yerel Gemma): şablon ve yer tutuculu metin, değer üreticileri, tekilleştirme
+3. Altın set v0'ın içeriği: üretim, bölme, insan onayı. Bitince ROADMAP'teki "Altın set v0" kutusu işaretlenir
+4. Etiketleme iş akışı: tanıyıcılar, NER ve sözlükler; uyuşmazlıkta yerel LLM; Argilla
 
 ## Yarım kalan iş
 
-Yok.
+Altın set v0: kompozisyon ve araçlar hazır, içerik yok (yukarıda 3. madde).
 
 ## Açık sorular
 
-- Doğrulayıcının komut satırı arayüzü yok; `mahrem-bench` gelince eklenir.
+- Doğrulayıcının ve dağılım raporunun komut satırı arayüzü yok; `mahrem-bench` gelince eklenir.

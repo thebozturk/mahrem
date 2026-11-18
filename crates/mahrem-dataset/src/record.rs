@@ -59,7 +59,7 @@ pub struct Meta {
 }
 
 /// Metnin nasıl yazıldığı.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, Serialize, Deserialize)]
 #[serde(rename_all = "snake_case")]
 pub enum Source {
     /// Elle yazıldı.
@@ -71,7 +71,7 @@ pub enum Source {
 }
 
 /// Metnin türü.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, Serialize, Deserialize)]
 #[serde(rename_all = "snake_case")]
 pub enum Domain {
     /// Müşteri hizmetleri mesajı.
@@ -93,7 +93,7 @@ pub enum Domain {
 }
 
 /// Kural katmanını ya da modeli zorlayan durum.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, Serialize, Deserialize)]
 #[serde(rename_all = "snake_case")]
 pub enum HardCase {
     /// Türkçe karaktersiz yazım ("Ayse Yilmaz").
@@ -142,4 +142,8 @@ pub struct Origin {
     pub generator: Option<String>,
     /// Üretimi yapan harness çalıştırmasının kimliği.
     pub run_id: Option<String>,
+    /// Bölme grubu: aynı şablondan ya da aynı prompt'tan çıkan belgeler aynı
+    /// grubu taşır ve açık/kapalı bölmede birlikte kalır. `null` ise belge
+    /// kendi grubudur.
+    pub group: Option<String>,
 }

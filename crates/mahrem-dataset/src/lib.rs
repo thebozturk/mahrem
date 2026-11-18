@@ -10,8 +10,12 @@
 mod label_serde;
 pub mod prediction;
 pub mod record;
+pub mod split;
+pub mod stats;
 pub mod validate;
 
 pub use prediction::{PredictedSpan, PredictionRecord};
 pub use record::{Domain, GoldRecord, GoldSpan, HardCase, Meta, Origin, SCHEMA_VERSION, Source};
+pub use split::{Part, canonical_jsonl, digest, part_of};
+pub use stats::{Composition, Deviation, Range, Stats};
 pub use validate::{GoldSet, Issue, IssueKind, Severity, check_record};
