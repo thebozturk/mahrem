@@ -209,7 +209,7 @@ Each category's placeholder name, threshold and operator (placeholder, partial m
 | `crates/mahrem-gateway` | LLM gateway | Placeholder |
 | `crates/mahrem-bench` | Benchmark CLI | Placeholder |
 | `conformance/` | Test cases shared by Rust and Python | 23 cases |
-| `datasets/` | Open datasets (CC BY 4.0) | Hard cases: 81 documents |
+| `datasets/` | Open datasets (CC BY 4.0) | Hard cases: 82 documents |
 
 ## Development
 

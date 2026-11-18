@@ -10,9 +10,10 @@ Son güncelleme: 2026-11-18
 
 ## Son biten
 
-- Zor örnekler seti: [datasets/hard-cases/hard-cases.jsonl](datasets/hard-cases/hard-cases.jsonl). 81 belge, 132 span, 11 belgede kişisel veri yok; her etiket ve her zor durum türü en az bir kez geçiyor. CI'da hatasız ve uyarısız doğrulanıyor
+- Zor örnekler seti: [datasets/hard-cases/hard-cases.jsonl](datasets/hard-cases/hard-cases.jsonl). 82 belge, 134 span, 11 belgede kişisel veri yok; her etiket ve her zor durum türü en az bir kez geçiyor. CI'da hatasız ve uyarısız doğrulanıyor
 - Açık veri setleri `datasets/` altında, CC BY 4.0. Karar: [0006](docs/decisions/0006-acik-veri-setleri.md)
 - Doğrulayıcı: alan koduyla başlayan telefon numarası (`(0212) …`) artık uyarı vermiyor
+- Etiketleme yönergesi 0.2.0: mesajın alıcısı olan kurum etiketlenmez
 - Daha önce: etiketleme yönergesi 0.1.0, `ACCOUNT_ID`, altın set şeması
 
 ## Sıradaki
@@ -27,5 +28,4 @@ Yok.
 
 ## Açık sorular
 
-- Yönergede boşluk: kişinin müşterisi olduğu kurum mesajın alıcısıysa (bankaya yazan banka müşterisi) `ORGANIZATION` etiketlenir mi? İki kural çelişiyor; zor örnekler setinde bu durumdan kaçınıldı.
 - Doğrulayıcının komut satırı arayüzü yok; `mahrem-bench` gelince eklenir.

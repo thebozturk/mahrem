@@ -4,7 +4,7 @@ Open Mahrem datasets. Everything in this folder is published under [CC BY 4.0](L
 
 | Set | File | Documents | Content |
 | --- | --- | --- | --- |
-| Hard cases | [`hard-cases/hard-cases.jsonl`](hard-cases/hard-cases.jsonl) | 81 | At least one document per labeling guideline rule and per label; irregular spelling, ambiguous names, spelled and split numbers; documents with no personal data |
+| Hard cases | [`hard-cases/hard-cases.jsonl`](hard-cases/hard-cases.jsonl) | 82 | At least one document per labeling guideline rule and per label; irregular spelling, ambiguous names, spelled and split numbers; documents with no personal data |
 
 Planned: the open part of the gold set. Its closed part is never stored here.
 
