@@ -10,8 +10,10 @@
 //! - [`case`]: Türkçe büyük/küçük harf dönüşümü (`İ` ↔ `i`, `I` ↔ `ı`).
 //! - [`label`]: kişisel veri etiketleri, kimlikleri ve placeholder adları.
 //! - [`offset`]: code point ile bayt konumu arasında dönüşüm.
+//! - [`fake`]: tohumlu sahte değer üreticileri (sentetik veri ve sahte veri operatörü).
 
 pub mod case;
+pub mod fake;
 pub mod label;
 pub mod offset;
 pub mod validators;

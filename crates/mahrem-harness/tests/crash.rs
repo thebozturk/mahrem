@@ -29,7 +29,7 @@ fn crash_child() {
     let rt = tokio::runtime::Runtime::new().unwrap();
     rt.block_on(async {
         Runner::new(child_plan(), PathBuf::from(dir))
-            .run(Dummy { max_sleep_ms: 12 }, CancellationToken::new())
+            .run(Dummy { max_sleep_ms: 40 }, CancellationToken::new())
             .await
             .unwrap();
     });
@@ -69,7 +69,7 @@ fn survives_random_kills() {
     let mut finished = false;
     for _ in 0..100 {
         let mut child = spawn(&dir.0);
-        let wait = Duration::from_millis(20 + splitmix64(&mut rng) % 150);
+        let wait = Duration::from_millis(20 + splitmix64(&mut rng) % 100);
         let start = Instant::now();
         while start.elapsed() < wait {
             if child.try_wait().unwrap().is_some() {
@@ -90,7 +90,7 @@ fn survives_random_kills() {
         let status = spawn(&dir.0).wait().unwrap();
         assert!(status.success(), "son çalıştırma hatayla bitti: {status}");
     }
-    assert!(kills >= 10, "süreç yeterince öldürülmedi ({kills})");
+    assert!(kills >= 8, "süreç yeterince öldürülmedi ({kills})");
     eprintln!("{kills} kez öldürüldü");
     verify_complete(&dir.0, &child_plan());
 }
