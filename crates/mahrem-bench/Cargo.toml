@@ -1,6 +1,6 @@
 [package]
 name = "mahrem-bench"
-description = "Mahrem benchmark CLI'ı"
+description = "Mahrem benchmark CLI'ı: bir aracın çıktısını altın sete karşı ölçer"
 version.workspace = true
 edition.workspace = true
 rust-version.workspace = true
@@ -9,6 +9,13 @@ repository.workspace = true
 publish = false
 
 [dependencies]
+mahrem-core.workspace = true
+mahrem-dataset = { path = "../mahrem-dataset" }
+serde_json.workspace = true
+sha2.workspace = true
+
+[dev-dependencies]
+serde_json.workspace = true
 
 [lints]
 workspace = true

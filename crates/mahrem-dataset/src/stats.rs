@@ -73,6 +73,49 @@ impl Stats {
             .sum()
     }
 
+    /// İnsan için kısa özet: metin türleri, varlık sayısı kovaları,
+    /// etiketler, yüksek riskli belge, çocuk span'i, zor durum ve elle yazım
+    /// oranı. Her satır `- ` ile başlar. Metin ya da değer içermez.
+    #[must_use]
+    pub fn summary(&self) -> String {
+        use std::fmt::Write as _;
+        let pct = |n: usize| self.share(n) * 100.0;
+        let mut out = String::new();
+        let domains: Vec<String> = self
+            .domains
+            .iter()
+            .map(|(d, n)| format!("{d:?} {:.0}%", pct(*n)))
+            .collect();
+        let _ = writeln!(out, "- Metin türleri: {}", domains.join(", "));
+        let buckets = [
+            ("0", self.documents_with_entities(0, Some(0))),
+            ("1", self.documents_with_entities(1, Some(1))),
+            ("2-3", self.documents_with_entities(2, Some(3))),
+            ("4-5", self.documents_with_entities(4, Some(5))),
+            ("6+", self.documents_with_entities(6, None)),
+        ];
+        let b: Vec<String> = buckets
+            .iter()
+            .map(|(k, n)| format!("{k}: {:.0}%", pct(*n)))
+            .collect();
+        let _ = writeln!(out, "- Varlık sayısı: {}", b.join(", "));
+        let labels: Vec<String> = self
+            .label_spans
+            .iter()
+            .map(|(l, n)| format!("{l} {n}"))
+            .collect();
+        let _ = writeln!(out, "- Etiketler: {}", labels.join(", "));
+        let _ = writeln!(
+            out,
+            "- Yüksek riskli belge: {}, çocuk span: {}, zor durumlu belge: {:.0}%, elle yazılmış: {:.0}%",
+            self.high_risk_documents,
+            self.child_spans,
+            pct(self.hard_case_documents),
+            pct(self.sources.get(&Source::Handwritten).copied().unwrap_or(0))
+        );
+        out
+    }
+
     fn share(&self, n: usize) -> f64 {
         if self.documents == 0 {
             return 0.0;

@@ -170,7 +170,7 @@ A tool's output is a JSONL file with one record per gold document. It does not r
 | `spans[].text` | string, optional | If given, must equal the gold text at those offsets. |
 | `spans[].score` | number, optional | Confidence in `[0, 1]`. |
 
-Tools with their own label names must map them to the IDs above before scoring.
+Tools with their own label names must map them to the IDs above before scoring. Scoring and metrics: [benchmark.md](../benchmark.md).
 
 ## Validation
 

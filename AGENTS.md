@@ -21,6 +21,7 @@ Her bilgi tek bir dosyada durur. Aynı şeyi ikinci bir dosyaya yazma, bağlant�
 | Neyi, hangi sınırlarla etiketliyoruz? | [docs/gold-set/labeling-guideline.md](docs/gold-set/labeling-guideline.md) |
 | Sentetik veri nasıl üretilir? | [docs/datagen.md](docs/datagen.md) |
 | Yapısal tespit neyi, nasıl bulur? | [docs/detection.md](docs/detection.md) |
+| Ölçüm nasıl yapılır, metrikler ne demek? | [docs/benchmark.md](docs/benchmark.md) |
 | Neden böyle yaptık? | [docs/decisions/](docs/decisions/README.md) |
 | Katkı kuralları | [CONTRIBUTING.md](CONTRIBUTING.md) |
 
@@ -38,7 +39,7 @@ Her bilgi tek bir dosyada durur. Aynı şeyi ikinci bir dosyaya yazma, bağlant�
 | `crates/mahrem-datagen` | Sentetik veri üretimi (binary); kılavuz: [docs/datagen.md](docs/datagen.md) |
 | `crates/mahrem-tools` | Ajanların ve MCP sunucusunun ortak araç tanımları |
 | `crates/mahrem-gateway` | LLM gateway (binary) |
-| `crates/mahrem-bench` | Benchmark CLI (binary) |
+| `crates/mahrem-bench` | Benchmark CLI (binary); kılavuz: [docs/benchmark.md](docs/benchmark.md) |
 | `conformance/` | Rust ve Python'un birlikte okuduğu ortak test vakaları |
 | `datasets/` | Açık veri setleri (CC BY 4.0); CI hepsini doğrular. Kapalı bölüm burada durmaz |
 

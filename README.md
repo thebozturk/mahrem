@@ -144,6 +144,13 @@ for e in mahrem.analyze("TCKN: 10000000146, tel 0 5 3 2 - 1 2 3 - 4 5 - 6 7"):
 # PHONE 23 50 0 5 3 2 - 1 2 3 - 4 5 - 6 7 0.99
 ```
 
+A benchmark CLI that scores any tool's predictions against a gold set. Reports contain numbers only, so it can be run on private data ([details](docs/benchmark.md)):
+
+```sh
+mahrem-bench predict --gold gold.jsonl --out mahrem.predictions.jsonl
+mahrem-bench score --gold gold.jsonl --pred mahrem.predictions.jsonl --scope structural
+```
+
 Checksum validators for Turkish identifiers and Turkish-aware case mapping, in Rust and Python:
 
 ```rust
@@ -211,7 +218,7 @@ The v0.1 rows are implemented: see [docs/detection.md](docs/detection.md). Each 
 | --- | --- | --- |
 | `crates/mahrem-core` | Detection, masking and restoration engine | Structural recognizers, validators, Turkish case mapping, labels, fake value generators |
 | `crates/mahrem-py` | Python bindings (PyO3, abi3 wheels) | Working |
-| `crates/mahrem-dataset` | Gold set and prediction file format, validator ([format](docs/gold-set/README.md)) | Working |
+| `crates/mahrem-dataset` | Gold set and prediction file format, validator, metrics ([format](docs/gold-set/README.md)) | Working |
 | `crates/mahrem-ner` | Turkish NER on ONNX Runtime | Placeholder |
 | `crates/mahrem-vault` | Encrypted placeholder ↔ value mapping | Placeholder |
 | `crates/mahrem-llm` | OpenAI-compatible client shared by the gateway and data generation; local endpoints only by default | Working |
@@ -219,7 +226,7 @@ The v0.1 rows are implemented: see [docs/detection.md](docs/detection.md). Each 
 | `crates/mahrem-datagen` | Synthetic data generation: a local LLM writes text with placeholders, generators fill in the values ([guide](docs/datagen.md)) | Working |
 | `crates/mahrem-tools` | Tool definitions shared by agents and the MCP server | Placeholder |
 | `crates/mahrem-gateway` | LLM gateway | Placeholder |
-| `crates/mahrem-bench` | Benchmark CLI | Placeholder |
+| `crates/mahrem-bench` | Benchmark CLI: scores any tool's output against a gold set ([guide](docs/benchmark.md)) | Working |
 | `conformance/` | Test cases shared by Rust and Python | 38 cases |
 | `datasets/` | Open datasets (CC BY 4.0) | Hard cases: 82 documents |
 
