@@ -5,6 +5,7 @@ Aynı girdi Rust çekirdeği, Python paketi ve gateway üzerinden aynı çıktı
 | Dosya | İçerik |
 | --- | --- |
 | `validators.jsonl` | Doğrulayıcılar ve Türkçe harf dönüşümü: `{"func", "input", "expected"}` |
+| `analyze.jsonl` | Yapısal tanıyıcılar, varsayılan eşikle: `{"text", "expected": [{"label", "start", "end", "text", "source"}]}`. Konumlar code point cinsinden; skor karşılaştırılmaz |
 
 Kurallar:
 

@@ -55,3 +55,4 @@ Bu karar neyi kolaylaştırır, neyi zorlaştırır?
 | [0008](0008-harness.md) | Harness LLM'den bağımsızdır; bitmiş örneklerin kaynağı shard'lardır |
 | [0009](0009-llm-yerel-uc.md) | LLM istemcisi varsayılan olarak yalnızca yerel uca bağlanır |
 | [0010](0010-sahte-deger-ureticileri.md) | Sahte değer üreticileri çekirdekte, listeler bu projede yazıldı |
+| [0011](0011-yapisal-tarayici.md) | Yapısal tanıyıcılar regex yerine elle yazılmış bir tarayıcıyla |

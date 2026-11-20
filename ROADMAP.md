@@ -40,8 +40,8 @@ Durum: **sürüyor**
 
 v0.1 bilerek dar tutulur. Bu kısım kesin çalışır ve tek başına işe yarar.
 
-- [ ] Serbest metinde TCKN/YKN, VKN, IBAN, kart, telefon ve e-posta tespiti
-- [ ] Düzensiz yazımın normalleştirilmesi: boşluklu, tireli ve bölünmüş numaralar
+- [x] Serbest metinde TCKN/YKN, VKN, IBAN, kart, telefon ve e-posta tespiti
+- [x] Düzensiz yazımın normalleştirilmesi: boşluklu, tireli ve bölünmüş numaralar
 - [ ] Türkçe harf dönüşümü (`İ` → `i`, `I` → `ı`)
 - [ ] Rust çekirdeği ve Python paketi (`pip install mahrem`)
 - [ ] Benchmark CLI ve ilk açık rapor

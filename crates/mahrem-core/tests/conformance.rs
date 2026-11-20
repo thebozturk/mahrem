@@ -1,7 +1,7 @@
 //! Ortak conformance seti: Rust ve Python aynı dosyayı okur.
 
 use mahrem_core::{
-    is_valid_card_number, is_valid_iban_tr, is_valid_tckn, is_valid_vkn, is_valid_ykn,
+    analyze, is_valid_card_number, is_valid_iban_tr, is_valid_tckn, is_valid_vkn, is_valid_ykn,
     to_lowercase_tr, to_uppercase_tr,
 };
 use serde::Deserialize;
@@ -49,4 +49,42 @@ fn validators_conformance() {
         count += 1;
     }
     assert!(count > 0, "conformance seti boş");
+}
+
+#[derive(Deserialize)]
+struct AnalyzeCase {
+    text: String,
+    expected: Vec<Value>,
+}
+
+#[test]
+fn analyze_conformance() {
+    let path = concat!(
+        env!("CARGO_MANIFEST_DIR"),
+        "/../../conformance/analyze.jsonl"
+    );
+    let data = std::fs::read_to_string(path).expect("conformance dosyası okunamadı");
+    let mut count = 0;
+    for (line_no, line) in data
+        .lines()
+        .enumerate()
+        .filter(|(_, l)| !l.trim().is_empty())
+    {
+        let case: AnalyzeCase = serde_json::from_str(line).expect("geçersiz JSON satırı");
+        let got: Vec<Value> = analyze(&case.text)
+            .iter()
+            .map(|e| {
+                serde_json::json!({
+                    "label": e.label.id(),
+                    "start": e.start,
+                    "end": e.end,
+                    "text": e.text(&case.text),
+                    "source": e.source,
+                })
+            })
+            .collect();
+        assert_eq!(got, case.expected, "satır {}: {:?}", line_no + 1, case.text);
+        count += 1;
+    }
+    assert!(count >= 10, "{count}");
 }
