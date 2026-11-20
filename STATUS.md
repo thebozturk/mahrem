@@ -2,7 +2,7 @@
 
 Bu dosya "nerede kaldık" sorusunun cevabıdır. Kısa kalır ve her iş bitiminde üzerine yazılır; geçmiş `git log`'dadır, büyük plan [ROADMAP.md](ROADMAP.md)'dedir.
 
-Son güncelleme: 2026-11-18
+Son güncelleme: 2026-11-20
 
 ## Aşama
 
@@ -10,19 +10,20 @@ Son güncelleme: 2026-11-18
 
 ## Son biten
 
-- Veri üretimi hattı: `mahrem-datagen` ([kılavuz](docs/datagen.md))
-  - Belge planı kompozisyon hedeflerini tutturuyor (testte); 8 metin türünde 88 senaryo, senaryo bölme grubudur
-  - Yer tutucu denetimi, yer tutucu dışında kalmış veri araması, ekle uyumlu değer seçimi, zor durum dönüşümleri, tekilleştirme, bölme ve rapor
-  - `fill` (elle yazılmış metinler) ve `blind` (model seçimi için kör okuma) komutları
-  - Sahte LLM sunucusuyla uçtan uca testte
-- Daha önce: sahte değer üreticileri, harness ve LLM istemcisi, altın set kompozisyonu, zor örnekler seti, etiketleme yönergesi 0.2.0, altın set şeması
+- v0.1 yapısal tanıyıcılar: `analyze` ([docs/detection.md](docs/detection.md))
+  - TCKN/YKN, VKN, IBAN, kart, telefon ve e-posta; boşluklu, tireli, satıra bölünmüş numaralar ve "at/nokta"lı e-posta
+  - Skor ve bağlam sözcükleri; bağlamsız VKN varsayılan eşiğin altında
+  - Rust ve Python'da aynı sonuç (conformance); zor örnekler setinde kapsamdaki 25 yapısal span'in hepsi bulunuyor, yanlış alarm yok
+  - Karar [0011](docs/decisions/0011-yapisal-tarayici.md)
+- Daha önce: veri üretimi hattı (`mahrem-datagen`), sahte değer üreticileri, harness ve LLM istemcisi, altın set kompozisyonu, zor örnekler seti, yönerge 0.2.0, altın set şeması
 
 ## Sıradaki
 
-1. Üretim modelinin seçimi: iki adayla yaklaşık 50'şer örnek, ret oranı ve kör okuma
+1. Üretim modelinin seçimi ve altın set v0 üretimi (ayrı makinede sürüyor)
 2. Elle yazılmış belgeler: her bölüm için en az 50 (proje sahibi yazar)
-3. Altın set v0 üretimi, `build`, insan onayı; açık bölüm `datasets/` altına. Bitince ROADMAP'teki "Altın set v0" kutusu işaretlenir
-4. Etiketleme iş akışı: tanıyıcılar, NER ve sözlükler; uyuşmazlıkta yerel LLM; Argilla
+3. v0.1: benchmark CLI (`mahrem-bench`): bir aracın çıktısını altın sete karşı belge ve kategori bazında ölçer
+4. v0.1: Python paketinin yayını (`pip install mahrem`)
+5. Etiketleme iş akışı: tanıyıcılar, NER ve sözlükler; uyuşmazlıkta yerel LLM; Argilla
 
 ## Yarım kalan iş
 

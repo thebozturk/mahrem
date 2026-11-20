@@ -20,6 +20,7 @@ Her bilgi tek bir dosyada durur. Aynı şeyi ikinci bir dosyaya yazma, bağlant�
 | Altın set nasıl bir dağılımda, nasıl bölünür? | [docs/gold-set/composition.md](docs/gold-set/composition.md) |
 | Neyi, hangi sınırlarla etiketliyoruz? | [docs/gold-set/labeling-guideline.md](docs/gold-set/labeling-guideline.md) |
 | Sentetik veri nasıl üretilir? | [docs/datagen.md](docs/datagen.md) |
+| Yapısal tespit neyi, nasıl bulur? | [docs/detection.md](docs/detection.md) |
 | Neden böyle yaptık? | [docs/decisions/](docs/decisions/README.md) |
 | Katkı kuralları | [CONTRIBUTING.md](CONTRIBUTING.md) |
 

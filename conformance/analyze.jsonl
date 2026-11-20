@@ -1,0 +1,15 @@
+{"text": "TCKN: 10000000146, tel 0532 123 45 67", "expected": [{"label": "TCKN", "start": 6, "end": 17, "text": "10000000146", "source": "tckn"}, {"label": "PHONE", "start": 23, "end": 37, "text": "0532 123 45 67", "source": "phone"}]}
+{"text": "Yabancı kimlik no: 99000000042.", "expected": [{"label": "YKN", "start": 19, "end": 30, "text": "99000000042", "source": "ykn"}]}
+{"text": "VKN: 123-456-7890", "expected": [{"label": "VKN", "start": 5, "end": 17, "text": "123-456-7890", "source": "vkn"}]}
+{"text": "Sipariş 1234567890 kargoya verildi.", "expected": []}
+{"text": "İadeyi TR33 0006 1005 1978 6457 8413 26 hesabına yapın.", "expected": [{"label": "IBAN", "start": 7, "end": 39, "text": "TR33 0006 1005 1978 6457 8413 26", "source": "iban"}]}
+{"text": "IBAN:\nTR33 0006 1005\n1978 6457 8413 26", "expected": [{"label": "IBAN", "start": 6, "end": 38, "text": "TR33 0006 1005\n1978 6457 8413 26", "source": "iban"}]}
+{"text": "kart numaram 5555 5555 5555 4444, son kullanma 12/29", "expected": [{"label": "CARD_NUMBER", "start": 13, "end": 32, "text": "5555 5555 5555 4444", "source": "card"}]}
+{"text": "Bana +90 (555) 000 00 01 ya da (0212) 000 00 02 sabit hattan ulaşın.", "expected": [{"label": "PHONE", "start": 5, "end": 24, "text": "+90 (555) 000 00 01", "source": "phone"}, {"label": "PHONE", "start": 31, "end": 47, "text": "(0212) 000 00 02", "source": "phone"}]}
+{"text": "Numaram 0 5 5 5 - 0 0 0 - 0 0 - 0 4, akşam arayın.", "expected": [{"label": "PHONE", "start": 8, "end": 35, "text": "0 5 5 5 - 0 0 0 - 0 0 - 0 4", "source": "phone"}]}
+{"text": "Çağrı merkezi 444 0 000", "expected": [{"label": "PHONE", "start": 14, "end": 23, "text": "444 0 000", "source": "phone"}]}
+{"text": "Belgeleri derya.kaplan@example.com adresine gönderin.", "expected": [{"label": "EMAIL", "start": 10, "end": 34, "text": "derya.kaplan@example.com", "source": "email"}]}
+{"text": "mailim mertyilmaz at example nokta net, oradan yazın", "expected": [{"label": "EMAIL", "start": 7, "end": 38, "text": "mertyilmaz at example nokta net", "source": "email-obfuscated"}]}
+{"text": "Öğrenci İçin: 10000000146", "expected": [{"label": "TCKN", "start": 14, "end": 25, "text": "10000000146", "source": "tckn"}]}
+{"text": "kart 4111 1111 1111 1111 TC 10000000146", "expected": [{"label": "CARD_NUMBER", "start": 5, "end": 24, "text": "4111 1111 1111 1111", "source": "card"}, {"label": "TCKN", "start": 28, "end": 39, "text": "10000000146", "source": "tckn"}]}
+{"text": "Kargo takip kodum TK000111222, ip=198.51.100.23, tarih 04.07.1988", "expected": []}

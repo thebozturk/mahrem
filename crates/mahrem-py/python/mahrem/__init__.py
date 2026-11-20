@@ -1,7 +1,10 @@
 """Mahrem: Türkçe metindeki kişisel verileri LLM'e gitmeden maskeler."""
 
 from mahrem._mahrem import (
+    DEFAULT_MIN_SCORE,
+    Entity,
     __version__,
+    analyze,
     is_valid_card_number,
     is_valid_iban_tr,
     is_valid_tckn,
@@ -12,7 +15,10 @@ from mahrem._mahrem import (
 )
 
 __all__ = [
+    "DEFAULT_MIN_SCORE",
+    "Entity",
     "__version__",
+    "analyze",
     "is_valid_card_number",
     "is_valid_iban_tr",
     "is_valid_tckn",

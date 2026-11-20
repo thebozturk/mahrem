@@ -6,7 +6,7 @@ Bu belge crate sınırlarını ve bağımlılık yönünü anlatır. Ürünün n
 
 ```mermaid
 flowchart TD
-    Py["mahrem-py<br/>PyO3 bağlaması"] --> Core["mahrem-core<br/>doğrulayıcılar, harf dönüşümü,<br/>etiketler, konum dönüşümü,<br/>sahte değer üreticileri"]
+    Py["mahrem-py<br/>PyO3 bağlaması"] --> Core["mahrem-core<br/>yapısal tanıyıcılar, doğrulayıcılar,<br/>harf dönüşümü, etiketler, konum dönüşümü,<br/>sahte değer üreticileri"]
     Dataset["mahrem-dataset<br/>altın set kayıtları, doğrulayıcı"] --> Core
     Datagen["mahrem-datagen<br/>sentetik veri (binary)"] --> Harness["mahrem-harness<br/>plan, aşama, shard, durum"]
     Datagen --> Llm["mahrem-llm<br/>OpenAI uyumlu istemci"]
@@ -18,6 +18,7 @@ flowchart TD
 
 - Kod `mahrem-core`, `mahrem-py`, `mahrem-dataset`, `mahrem-harness`, `mahrem-llm` ve `mahrem-datagen` içindedir. Diğer crate'ler yer tutucudur ve hiçbir bağımlılıkları yoktur.
 - `mahrem-core`'un çalışma zamanı bağımlılığı yoktur. Etiket listesi (`Label`) burada durur, çünkü motorun çıktısı bu türlerle ifade edilir.
+- Yapısal tanıyıcılar (`mahrem_core::detect`, `analyze`) çekirdektedir; bağımlılıksız, elle yazılmış bir tarayıcıdır. Gerekçe: [0011](decisions/0011-yapisal-tarayici.md).
 - Sahte değer üreticileri (`mahrem_core::fake`) de çekirdektedir: sentetik veri hattı ve ileride sahte veri operatörü aynı kodu kullanır. Gerekçe: [0010](decisions/0010-sahte-deger-ureticileri.md).
 - `mahrem-py` yalnızca çekirdeği dışarı açar; kendi mantığı yoktur.
 - `mahrem-dataset` motor değil, veri aracıdır: altın set ve tahmin dosyalarının kayıt tipleri, doğrulayıcısı, dağılım raporu, açık/kapalı bölmesi ve kapalı bölüm özeti ([format](gold-set/README.md), [kompozisyon](gold-set/composition.md)). Bench ve veri üretimi bunu kullanacak. Gerekçe: [0004](decisions/0004-veri-seti-crate.md).

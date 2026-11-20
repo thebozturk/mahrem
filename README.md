@@ -133,6 +133,17 @@ The full plan, including candidates after v1.0, is in [ROADMAP.md](ROADMAP.md).
 
 ### What works today
 
+Structural detection of TCKN/YKN, VKN, IBAN, card numbers, phone numbers and e-mail addresses, including spaced, hyphenated and line-broken numbers and written-out e-mail addresses ([details](docs/detection.md)):
+
+```python
+import mahrem
+
+for e in mahrem.analyze("TCKN: 10000000146, tel 0 5 3 2 - 1 2 3 - 4 5 - 6 7"):
+    print(e.label, e.start, e.end, e.text, round(e.score, 2))
+# TCKN 6 17 10000000146 0.99
+# PHONE 23 50 0 5 3 2 - 1 2 3 - 4 5 - 6 7 0.99
+```
+
 Checksum validators for Turkish identifiers and Turkish-aware case mapping, in Rust and Python:
 
 ```rust
@@ -177,7 +188,7 @@ Every release report shows results on both the open and the closed part.
 | Organizations and children | Employer, school, hospital; a child's name and age | NER + context (*oğlum*, *kızım*) | v0.5 |
 | KVKK Art. 6 | Health, religion, ethnic origin, political opinion, union membership, criminal records, biometric and genetic data, sex life | Sentence classifier | v1.0 |
 
-Each category's placeholder name, threshold and operator (placeholder, partial mask, keyed hash or realistic Turkish fake data) is configurable by policy.
+The v0.1 rows are implemented: see [docs/detection.md](docs/detection.md). Each category's placeholder name, threshold and operator (placeholder, partial mask, keyed hash or realistic Turkish fake data) is configurable by policy.
 
 ## Design principles
 
@@ -198,7 +209,7 @@ Each category's placeholder name, threshold and operator (placeholder, partial m
 
 | Path | Purpose | State |
 | --- | --- | --- |
-| `crates/mahrem-core` | Detection, masking and restoration engine | Validators, Turkish case mapping, labels, fake value generators |
+| `crates/mahrem-core` | Detection, masking and restoration engine | Structural recognizers, validators, Turkish case mapping, labels, fake value generators |
 | `crates/mahrem-py` | Python bindings (PyO3, abi3 wheels) | Working |
 | `crates/mahrem-dataset` | Gold set and prediction file format, validator ([format](docs/gold-set/README.md)) | Working |
 | `crates/mahrem-ner` | Turkish NER on ONNX Runtime | Placeholder |
@@ -209,7 +220,7 @@ Each category's placeholder name, threshold and operator (placeholder, partial m
 | `crates/mahrem-tools` | Tool definitions shared by agents and the MCP server | Placeholder |
 | `crates/mahrem-gateway` | LLM gateway | Placeholder |
 | `crates/mahrem-bench` | Benchmark CLI | Placeholder |
-| `conformance/` | Test cases shared by Rust and Python | 23 cases |
+| `conformance/` | Test cases shared by Rust and Python | 38 cases |
 | `datasets/` | Open datasets (CC BY 4.0) | Hard cases: 82 documents |
 
 ## Development
