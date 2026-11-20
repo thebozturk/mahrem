@@ -4,21 +4,41 @@ build-backend = "maturin"
 
 [project]
 name = "mahrem"
-description = "Türkçe metindeki kişisel verileri LLM'e gitmeden maskeler"
-readme = "../../README.md"
+description = "Privacy layer for LLMs, built for Turkish: finds personal data (TCKN, VKN, IBAN, cards, phones, e-mail) in Turkish text"
+readme = "README.md"
 license = "Apache-2.0"
+license-files = ["LICENSE"]
 requires-python = ">=3.10"
 dynamic = ["version"]
+keywords = ["pii", "turkish", "kvkk", "pseudonymization", "llm", "privacy"]
 classifiers = [
-  "Programming Language :: Rust",
-  "Programming Language :: Python :: 3",
+  "Development Status :: 2 - Pre-Alpha",
+  "Intended Audience :: Developers",
   "Natural Language :: Turkish",
+  "Operating System :: MacOS",
+  "Operating System :: Microsoft :: Windows",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Programming Language :: Rust",
+  "Topic :: Security",
+  "Topic :: Text Processing :: Linguistic",
+  "Typing :: Typed",
 ]
 
 [project.urls]
-Repository = "https://github.com/thebozturk/mahrem"
+Homepage = "https://github.com/thebozturk/mahrem"
+Documentation = "https://github.com/thebozturk/mahrem/tree/main/docs"
+Issues = "https://github.com/thebozturk/mahrem/issues"
+Changelog = "https://github.com/thebozturk/mahrem/blob/main/CHANGELOG.md"
 
 [tool.maturin]
 module-name = "mahrem._mahrem"
 python-source = "python"
 features = ["pyo3/extension-module"]
+exclude = ["python/mahrem/__pycache__/**", "python/mahrem/*.so", "python/mahrem/*.pyd"]

@@ -57,3 +57,4 @@ Bu karar neyi kolaylaştırır, neyi zorlaştırır?
 | [0010](0010-sahte-deger-ureticileri.md) | Sahte değer üreticileri çekirdekte, listeler bu projede yazıldı |
 | [0011](0011-yapisal-tarayici.md) | Yapısal tanıyıcılar regex yerine elle yazılmış bir tarayıcıyla |
 | [0012](0012-benchmark-metrikleri.md) | Benchmark metrikleri: sızıntı etiketten bağımsız, payda kişisel veri içeren belgeler |
+| [0013](0013-yayin-akisi.md) | Yayın akışı: etiketle tetiklenir, onaylı ortamda, anahtarsız |
