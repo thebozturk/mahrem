@@ -1,14 +1,12 @@
 //! Çalıştırmaları birleştirme, tekilleştirme, bölme ve rapor.
 
-use std::collections::BTreeMap;
 use std::fmt::Write as _;
 use std::fs;
 use std::path::{Path, PathBuf};
 
 use mahrem_dataset::split::group_of;
 use mahrem_dataset::{
-    Composition, GoldRecord, GoldSet, Part, Severity, Source, Stats, canonical_jsonl, digest,
-    part_of,
+    Composition, GoldRecord, GoldSet, Part, Severity, Stats, canonical_jsonl, digest, part_of,
 };
 use serde::Deserialize;
 
@@ -231,7 +229,7 @@ fn write_report(
             .map(ToString::to_string)
             .collect();
         let _ = writeln!(report, "\n## {name} bölüm: {} belge\n", stats.documents);
-        write_stats(&mut report, &stats);
+        report.push_str(&stats.summary());
         if devs.is_empty() {
             let _ = writeln!(report, "\nHedeflerin hepsi tutuyor.");
         } else {
@@ -257,49 +255,4 @@ fn write_report(
     let report_path = opts.out.join(format!("{}.report.md", opts.name));
     fs::write(&report_path, report).map_err(io(&report_path))?;
     Ok((deviations, report_path))
-}
-
-#[allow(clippy::cast_precision_loss)]
-fn write_stats(out: &mut String, s: &Stats) {
-    let pct = |n: usize| {
-        if s.documents == 0 {
-            0.0
-        } else {
-            n as f64 * 100.0 / s.documents as f64
-        }
-    };
-    let domains: Vec<String> = s
-        .domains
-        .iter()
-        .map(|(d, n)| format!("{d:?} {:.0}%", pct(*n)))
-        .collect();
-    let _ = writeln!(out, "- Metin türleri: {}", domains.join(", "));
-    let buckets: BTreeMap<&str, usize> = [
-        ("0", s.documents_with_entities(0, Some(0))),
-        ("1", s.documents_with_entities(1, Some(1))),
-        ("2-3", s.documents_with_entities(2, Some(3))),
-        ("4-5", s.documents_with_entities(4, Some(5))),
-        ("6+", s.documents_with_entities(6, None)),
-    ]
-    .into_iter()
-    .collect();
-    let b: Vec<String> = buckets
-        .iter()
-        .map(|(k, n)| format!("{k}: {:.0}%", pct(*n)))
-        .collect();
-    let _ = writeln!(out, "- Varlık sayısı: {}", b.join(", "));
-    let labels: Vec<String> = s
-        .label_spans
-        .iter()
-        .map(|(l, n)| format!("{l} {n}"))
-        .collect();
-    let _ = writeln!(out, "- Etiketler: {}", labels.join(", "));
-    let _ = writeln!(
-        out,
-        "- Yüksek riskli belge: {}, çocuk span: {}, zor durumlu belge: {:.0}%, elle yazılmış: {:.0}%",
-        s.high_risk_documents,
-        s.child_spans,
-        pct(s.hard_case_documents),
-        pct(s.sources.get(&Source::Handwritten).copied().unwrap_or(0))
-    );
 }
