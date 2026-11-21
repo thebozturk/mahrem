@@ -28,9 +28,9 @@ Details: [detection](https://github.com/thebozturk/mahrem/blob/main/docs/detecti
 ## Validators and case mapping
 
 ```python
-mahrem.is_valid_tckn("10000000146")                  # True
+mahrem.is_valid_tckn("10000000146")  # True
 mahrem.is_valid_iban_tr("TR330006100519786457841326")  # True
-mahrem.to_lowercase_tr("İSTANBUL ILGAZ")             # 'istanbul ılgaz', not 'i̇stanbul ilgaz'
+mahrem.to_lowercase_tr("İSTANBUL ILGAZ")  # 'istanbul ılgaz', not 'i̇stanbul ilgaz'
 ```
 
 Also available: `is_valid_ykn`, `is_valid_vkn`, `is_valid_card_number` and `to_uppercase_tr`.
