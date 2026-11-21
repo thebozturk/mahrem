@@ -161,12 +161,12 @@ assert!(is_valid_iban_tr("TR330006100519786457841326"));
 assert_eq!(to_lowercase_tr("İSTANBUL ILGAZ"), "istanbul ılgaz"); // not "i̇stanbul ilgaz"
 ```
 
-The Python package is not on PyPI yet. To try it from source:
+Install the Python package with `pip install mahrem`, or add the Rust crate with `cargo add mahrem-core`. Both are early releases; see the [changelog](CHANGELOG.md). To work from source:
 
 ```sh
 git clone https://github.com/thebozturk/mahrem && cd mahrem
 uv sync
-uv run python -c "import mahrem; print(mahrem.is_valid_tckn('10000000146'))"
+uv run python -c "import mahrem; print(mahrem.analyze('TCKN: 10000000146'))"
 ```
 
 ## Measured in the open

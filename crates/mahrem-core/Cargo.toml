@@ -1,6 +1,8 @@
 [package]
 name = "mahrem-core"
-description = "Mahrem çekirdeği: Türkçe kişisel veri tespiti, maskeleme ve geri yerleştirme"
+description = "Core of Mahrem: detects personal data in Turkish text (TCKN, VKN, IBAN, cards, phones, e-mail) for masking before it reaches an LLM"
+readme = "README.md"
+exclude = ["tests/"]
 version.workspace = true
 edition.workspace = true
 rust-version.workspace = true
