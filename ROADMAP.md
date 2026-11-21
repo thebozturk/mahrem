@@ -42,8 +42,8 @@ v0.1 bilerek dar tutulur. Bu kısım kesin çalışır ve tek başına işe yara
 
 - [x] Serbest metinde TCKN/YKN, VKN, IBAN, kart, telefon ve e-posta tespiti
 - [x] Düzensiz yazımın normalleştirilmesi: boşluklu, tireli ve bölünmüş numaralar
-- [ ] Türkçe harf dönüşümü (`İ` → `i`, `I` → `ı`)
-- [ ] Rust çekirdeği ve Python paketi (`pip install mahrem`)
+- [x] Türkçe harf dönüşümü (`İ` → `i`, `I` → `ı`)
+- [x] Rust çekirdeği ve Python paketi (`pip install mahrem`)
 - [ ] Benchmark CLI ve ilk açık rapor
 
 **Kapı 1:** yapısal recall ≥ %99; sızıntı baz çizgisi ölçülüp yayınlanır.

@@ -32,7 +32,7 @@ Restored     Elif'in alerjisi için Ayşe Demir'e dönüş yapılmalı.
 The LLM never sees the name, the child's name, the health condition or the phone number. The mapping between placeholders and real values stays in your infrastructure. Note the last line: the LLM wrote `<KİŞİ_2>'ın`, and a plain find-and-replace would have produced *Elif'ın*. Mahrem re-inflects the suffix for the real value and returns *Elif'in*.
 
 > [!WARNING]
-> **Mahrem is in its preparation phase and is not usable yet.** Today the core contains checksum validators and Turkish case mapping. Masking, restoration and the gateway are being built gate by gate; see [Status](#status) and the [roadmap](ROADMAP.md). Watch the repository to follow along.
+> **Mahrem is in its preparation phase and does not mask text yet.** Today `pip install mahrem` gives you structural detection, checksum validators and Turkish case mapping. Masking, restoration and the gateway are being built gate by gate; see [Status](#status) and the [roadmap](ROADMAP.md). Watch the repository to follow along.
 
 ## Why Mahrem?
 
